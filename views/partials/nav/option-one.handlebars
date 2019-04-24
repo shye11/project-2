@@ -1,0 +1,158 @@
+<nav class="nav-ver-one">
+<div class="container">
+
+	<a class="logo" href="/">
+		<img src="/assets/images/logo.gif" alt="logo">
+	</a>
+
+	<a href="#" class="hamburger d-md-block d-lg-none">
+		<span class="line-one"></span>
+		<span class="line-two"></span>
+		<span class="line-three"></span>
+	</a>
+
+	<ul class="main-nav">
+		<li>
+			<a href="#" class="home">Home</a>
+		</li>
+
+		<li>
+			<a href="#" class="about">About</a>
+		</li>
+
+		<li>
+			<a href="#" class="portfolio">Portfolio</a>
+		</li>
+
+		<li>
+			<a href="#" class="contact">Contact</a>
+		</li>
+	</ul>
+
+
+</div>
+</nav>
+
+<style>
+	nav.nav-ver-one { 
+		padding: 0;
+		clear: both;
+		display: block;
+		position: relative;
+		width: 100%;
+		background: rgba(0,0,0,0.4);
+	} 
+	nav.nav-ver-one .logo { 
+		display: inline-block; 
+	}
+	nav.nav-ver-one img { 
+		width: 100%;
+		max-width: 140px;
+	}
+
+	nav.nav-ver-one .main-nav { 
+		float: right; 
+		list-style: none;
+		margin: 0; 
+		padding: 0;
+	}
+
+	nav.nav-ver-one .main-nav li { 
+		display: inline; 
+		margin: 0; 
+		padding: 0; 
+	}
+
+	nav.nav-ver-one .main-nav li a {
+		transition: all 0.2s linear;
+		font-family: Helvetica, sans-serif;
+		font-weight: 100;
+		text-decoration: none; 
+		color: #FFF;
+		float: left;
+		font-size: 18px;
+		padding: 22px 20px;
+	}
+
+	nav.nav-ver-one .main-nav li a:hover { 
+		background: rgba(255,255,255,0.4);
+	}
+
+	nav.nav-ver-one .hamburger { display: none; position: absolute; }
+
+	@media (max-width: 767px){
+		nav.nav-ver-one .main-nav { 
+			transition: all 0.1s ease;
+			z-index: 1px;
+			top: -1000px;
+			width: 100%;
+			left: 0px;
+			position: absolute;
+			text-align: center;
+			z-index: 1;
+		}
+		nav.nav-ver-one .main-nav.open {
+			display: block;
+			left: 0px;
+			top: 70px;
+			background: rgba(150,150,150,0.9);
+			text-align: center;
+		}
+		nav.nav-ver-one .main-nav li a {
+			display: block;
+			width: 100%;
+		}
+		nav.nav-ver-one .hamburger { 
+			position: absolute;
+			display: inline-block; 
+			right: 20px;
+			top: 15px;
+			width: 40px;
+			height: 40px;
+		}
+
+		nav.nav-ver-one .hamburger .line-one,
+		nav.nav-ver-one .hamburger .line-two,
+		nav.nav-ver-one .hamburger .line-three {
+			transition: all 0.05s ease;
+			position: absolute;
+			display: inline-block;
+			height: 2px; 
+			width: 40px;
+			background: #efefef;
+			top: 5px;
+
+		}
+		nav.nav-ver-one .hamburger .line-two { 
+			top: 18px;
+		}
+		nav.nav-ver-one .hamburger .line-three {
+			top: 32px;
+		}
+
+		nav.nav-ver-one .hamburger:hover .line-one {
+			top: 7px;
+		}
+		nav.nav-ver-one .hamburger:hover .line-two {
+			left: -5px;
+			width: 50px;
+		}
+		nav.nav-ver-one .hamburger:hover .line-three {
+			top: 30px;
+		}
+
+		nav.nav-ver-one .hamburger.open .line-one {
+			top: 18px;
+			transform: rotate(-45deg);
+		}
+		nav.nav-ver-one .hamburger.open .line-two {
+			opacity: 0;
+		}
+		nav.nav-ver-one .hamburger.open .line-three {
+			top: 18px;
+			transform: rotate(45deg);
+		}
+	}
+
+
+</style>
