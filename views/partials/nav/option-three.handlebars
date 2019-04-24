@@ -1,15 +1,15 @@
 {{!--
 	DESCRIPTION:
-	This is a light version of the navigation. 
+	This is a dark version of the navigation. 
 --}}
-<nav class="nav-ver-two">
+<nav class="nav-ver-three">
 <div class="container">
 
 	<a class="logo" href="/" style="background: url(/assets/images/sample-logo.png) center no-repeat; background-size: contain;">
 		<img src="/assets/images/logo.gif" alt="logo">
 	</a>
 
-	<a href="#" class="hamburger d-md-block d-lg-none">
+	<a href="#" class="hamburger off-canvas d-md-block d-lg-none">
 		<span class="line-one"></span>
 		<span class="line-two"></span>
 		<span class="line-three"></span>
@@ -38,72 +38,88 @@
 </nav>
 
 <style>
-	nav.nav-ver-two { 
+	nav.nav-ver-three { 
+		padding: 0;
 		clear: both;
 		display: block;
 		position: relative;
 		width: 100%;
-		background: rgba(255,255,255,0.4);
+		background: rgba(0,0,0,0.4);
 	} 
-	nav.nav-ver-two .logo { 
+	nav.nav-ver-three .logo { 
 		display: inline-block; 
 	}
-	nav.nav-ver-two img { 
+	nav.nav-ver-three img { 
 		width: 100%;
 		max-width: 140px;
 	}
 
-	nav.nav-ver-two .main-nav { 
+	nav.nav-ver-three .main-nav { 
 		float: right; 
 		list-style: none;
 		margin: 0; 
 		padding: 0;
 	}
 
-	nav.nav-ver-two .main-nav li { 
+	nav.nav-ver-three .main-nav li { 
 		display: inline; 
 		margin: 0; 
 		padding: 0; 
 	}
 
-	nav.nav-ver-two .main-nav li a {
+	nav.nav-ver-three .main-nav li a {
 		transition: all 0.2s linear;
 		font-family: Helvetica, sans-serif;
 		font-weight: 100;
 		text-decoration: none; 
-		color: #333;
+		color: #FFF;
 		float: left;
 		font-size: 18px;
 		padding: 22px 20px;
 	}
 
-	nav.nav-ver-two .main-nav li a:hover { 
-		background: rgba(240,240,240,0.9);
+	nav.nav-ver-three .main-nav li a:hover { 
+		background: rgba(255,255,255,0.4);
 	}
 
-	nav.nav-ver-two .hamburger { display: none; position: absolute; }
+	nav.nav-ver-three .hamburger { display: none; position: absolute; }
 
 	@media (max-width: 767px){
-		nav.nav-ver-two .main-nav { 
+		#sitewrapper {
+			padding: 0;
+			clear: both;
+			display: block;
+			position: relative;
+			width: 100%;
+			transition: all 0.1s ease;
+		}
+		nav.nav-ver-three .main-nav { 
 			transition: all 0.1s ease;
 			z-index: 1px;
-			top: -1000px;
+			right: -100%;
 			width: 100%;
-			left: 0px;
-			text-align: center;
+			left: auto;
 			position: absolute;
-		}
-		nav.nav-ver-two .main-nav.open {
-			top: 70px;
-			background: rgba(255,255,255,0.9);
 			text-align: center;
-			z-index: 100;
+			z-index: 1;
 		}
-		nav.nav-ver-two .main-nav li a {
+
+		#sitewrapper.open {
+			margin-left: -70%;
+		}
+		nav.nav-ver-three .main-nav.open {
+			display: block;
+			right: -100%;
+			top: 0px;
+			background: rgba(150,150,150,0.9);
+			text-align: center;
+		}
+		nav.nav-ver-three .main-nav li a {
 			display: block;
 			width: 100%;
+			text-align: left;
 		}
-		nav.nav-ver-two .hamburger { 
+		nav.nav-ver-three .hamburger { 
 			position: absolute;
 			display: inline-block; 
 			right: 20px;
@@ -112,44 +128,44 @@
 			height: 40px;
 		}
 
-		nav.nav-ver-two .hamburger .line-one,
-		nav.nav-ver-two .hamburger .line-two,
-		nav.nav-ver-two .hamburger .line-three {
+		nav.nav-ver-three .hamburger .line-one,
+		nav.nav-ver-three .hamburger .line-two,
+		nav.nav-ver-three .hamburger .line-three {
 			transition: all 0.05s ease;
 			position: absolute;
 			display: inline-block;
 			height: 2px; 
 			width: 40px;
-			background: #444;
+			background: #efefef;
 			top: 5px;
 
 		}
-		nav.nav-ver-two .hamburger .line-two { 
+		nav.nav-ver-three .hamburger .line-two { 
 			top: 18px;
 		}
-		nav.nav-ver-two .hamburger .line-three {
+		nav.nav-ver-three .hamburger .line-three {
 			top: 32px;
 		}
 
-		nav.nav-ver-two .hamburger:hover .line-one {
+		nav.nav-ver-three .hamburger:hover .line-one {
 			top: 7px;
 		}
-		nav.nav-ver-two .hamburger:hover .line-two {
+		nav.nav-ver-three .hamburger:hover .line-two {
 			left: -5px;
 			width: 50px;
 		}
-		nav.nav-ver-two .hamburger:hover .line-three {
+		nav.nav-ver-three .hamburger:hover .line-three {
 			top: 30px;
 		}
 
-		nav.nav-ver-two .hamburger.open .line-one {
+		nav.nav-ver-three .hamburger.open .line-one {
 			top: 18px;
 			transform: rotate(-45deg);
 		}
-		nav.nav-ver-two .hamburger.open .line-two {
+		nav.nav-ver-three .hamburger.open .line-two {
 			opacity: 0;
 		}
-		nav.nav-ver-two .hamburger.open .line-three {
+		nav.nav-ver-three .hamburger.open .line-three {
 			top: 18px;
 			transform: rotate(45deg);
 		}
