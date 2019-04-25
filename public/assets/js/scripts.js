@@ -3,7 +3,9 @@ $(function() {
     // our goal is to load a form based on the element clicked
     $(".editable").on("click",function(){
         var data = $(this).attr("data-id");
-        var url = "/forms/"+data
+        var url = "/forms/"+data;
+        console.log(data);
+        console.log(url);
         $("#sidebar").load(url, function(){
 
         })
@@ -13,13 +15,14 @@ $(function() {
     //frameworks 
     $(".frameworkOption").on("change",function(){
         var element = $(this).attr("data-option");
-        var value = $(this).find(":selected").val();
+        var value = $(this).find(":selected").attr("value");
         console.log(element);
         console.log(value);
         var url = "/element/"+element+"/"+value;
-        $("#navigation-container").load(url);
+        $("#"+element).load(url);
 
-    }); 
+    });
+    
 
     $(document).on("click",".hamburger",function(e){
         e.preventDefault();
