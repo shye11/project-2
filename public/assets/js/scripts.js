@@ -21,7 +21,7 @@ $(function() {
         var url = "/element/"+element+"/"+value;
         $("#"+element).load(url);
 
-    }); 
+    });
 
     $(document).on("click",".hamburger",function(e){
         e.preventDefault();
