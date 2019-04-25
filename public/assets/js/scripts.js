@@ -15,7 +15,7 @@ $(function() {
     //frameworks 
     $(".frameworkOption").on("change",function(){
         var element = $(this).attr("data-option");
-        var value = $(this).find(":selected").attr();
+        var value = $(this).find(":selected").attr("value");
         console.log(element);
         console.log(value);
         var url = "/element/"+element+"/"+value;
