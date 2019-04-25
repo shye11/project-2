@@ -22,6 +22,7 @@ $(function() {
         $("#"+element).load(url);
 
     });
+    
 
     $(document).on("click",".hamburger",function(e){
         e.preventDefault();
