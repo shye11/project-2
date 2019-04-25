@@ -1,7 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
   var Layouts = sequelize.define("Layouts", {
     companyName: DataTypes.STRING,
-    navItems: DataTypes.JSON
+    nav: DataTypes.JSON,
+    carousel: DataTypes.JSON
   });
   return Layouts;
 };

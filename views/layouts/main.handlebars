@@ -10,11 +10,77 @@
 		
 	</head>
 	<body>
-		<div id="sitewrapper">
-			{{{ body }}}
+		<div id="sidebar">
+			
+			<div class="container">
+
+				<div class="row">
+					<div class="col-md-12">
+
+						<br>
+
+						<label class="mt-10">Navigation</label>
+						<select class="frameworkOption form-control form-control" data-option="nav">
+							<option>option-one</option>
+							<option>option-two</option>
+							<option>option-three</option>
+							<option>option-four</option>
+						</select>
+						<hr>
+						<label>Carousel</label>
+						<select class="frameworkOption form-control form-control" data-option="carousel">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<hr>
+						<label>Body</label>
+						<input name="nav1" value="" placeholder="About" class="form-control mb-2">
+						<select class="frameworkOption form-control form-control" data-option="body">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<hr>
+						<input name="nav2" value="" placeholder="Portfolio" class="form-control mb-2">
+						<select class="frameworkOption form-control form-control">
+							<option>option-on</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<hr>
+						<input name="nav3" value="" placeholder="Contact" class="form-control mb-2">
+						<select class="frameworkOption form-control form-control">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<hr>
+						<label>Footer</label>
+						<select class="frameworkOption form-control form-control" data-option="footer">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+
 		</div>
+		<div id="main-content">
+			<div id="sitewrapper">
+				{{{ body }}}
+			</div>
+		</div>
+		
 	
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="/assets/js/scripts.js"></script>
