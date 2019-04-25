@@ -13,11 +13,11 @@ $(function() {
     //frameworks 
     $(".frameworkOption").on("change",function(){
         var element = $(this).attr("data-option");
-        var value = $(this).find(":selected").val();
+        var value = $(this).find(":selected").attr();
         console.log(element);
         console.log(value);
         var url = "/element/"+element+"/"+value;
-        $("#navigation-container").load(url);
+        $("#"+element).load(url);
 
     }); 
 
