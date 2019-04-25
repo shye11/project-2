@@ -36,5 +36,11 @@ module.exports = function(app) {
   app.get("/",function(req,res) {
     res.render('index');
   });
+
+  app.get("/element/:folder?/:file?", function(req,res){
+    var folder = req.params.folder;
+    var file = req.params.file;
+    res.render('partials/'+folder+'/'+file, { layout: 'elements' });
+  });
   
 };

@@ -7,14 +7,78 @@
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 	<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />		
+
+	<style>
+
+		#sitewrapper { width: 80%; float: left; }
+		#sidebar { width: 20%; float: left; }
+
+	</style>
 		
 	</head>
 	<body>
+		<div id="sidebar">
+			
+			<div class="container">
+
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Navigation</h4>
+						<select class="frameworkOption" data-option="nav">
+							<option>option-one</option>
+							<option>option-two</option>
+							<option>option-three</option>
+							<option>option-four</option>
+						</select>
+						<h4>Carousel</h4>
+						<select class="carouselOptions frameworkOption" data-option="carousel">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<h4>Body</h4>
+						<input name="nav1" value="" placeholder="About">
+						<select class="bodyOPtion frameworkOption">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<hr>
+						<input name="nav1" value="" placeholder="Portfolio">
+						<select class="bodyOPtion frameworkOption">
+							<option>option-on</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<hr>
+						<input name="nav1" value="" placeholder="Contact">
+						<select class="bodyOPtion frameworkOption">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+						<h4>Footer</h4>
+						<select class="footerOption frameworkOption">
+							<option>Option 1</option>
+							<option>Option 2</option>
+							<option>Option 3</option>
+							<option>Option 4</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
 		<div id="sitewrapper">
 			{{{ body }}}
 		</div>
 	
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="/assets/js/scripts.js"></script>
