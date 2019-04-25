@@ -3,7 +3,9 @@ $(function() {
     // our goal is to load a form based on the element clicked
     $(".editable").on("click",function(){
         var data = $(this).attr("data-id");
-        var url = "/forms/"+data
+        var url = "/forms/"+data;
+        console.log(data);
+        console.log(url);
         $("#sidebar").load(url, function(){
 
         })
