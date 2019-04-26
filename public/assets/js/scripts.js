@@ -20,6 +20,18 @@ $(function() {
         console.log(value);
         var url = "/element/"+element+"/"+value;
         $("#"+element).load(url);
+        id = 1; // user 1
+        $.ajax("/api/layout/" + id, {
+            type: "PUT",
+            data:{
+                    column: element,
+                    option: value
+            },
+          }).then(
+            function() {
+              //location.reload();
+            }
+          );
 
     });
     

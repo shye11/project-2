@@ -37,6 +37,29 @@ module.exports = function(app) {
     res.render('index');
   });
 
+  app.put("/api/layout/:id", function(req,res){
+    var updateObj = {};
+    if(req.body.column == "nav"){
+      updateObj = {
+        nav: { "option" : req.body.option }
+      }
+    }
+    if(req.body.column == "footer"){
+      updateObj = {
+        footer: { "option" : req.body.option }
+      }
+    }
+    console.log(updateObj);
+    db.Layout.update(updateObj, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+
   app.get("/element/:folder?/:file?", function(req,res){
     var folder = req.params.folder;
     var file = req.params.file;
