@@ -5,7 +5,8 @@
 	<title>Project 2</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />		
 		
 	</head>
@@ -35,31 +36,45 @@
 							<option>Option 4</option>
 						</select>
 						<hr>
-						<label>Body</label>
-						<input name="nav1" value="" placeholder="About" class="form-control mb-2">
-						<select class="frameworkOption form-control form-control" data-option="body">
-							<option>Option 1</option>
-							<option>Option 2</option>
-							<option>Option 3</option>
-							<option>Option 4</option>
-						</select>
-						<hr>
-						<input name="nav2" value="" placeholder="Portfolio" class="form-control mb-2">
-						<select class="frameworkOption form-control form-control">
-							<option>option-on</option>
-							<option>Option 2</option>
-							<option>Option 3</option>
-							<option>Option 4</option>
-						</select>
-						<hr>
-						<input name="nav3" value="" placeholder="Contact" class="form-control mb-2">
-						<select class="frameworkOption form-control form-control">
-							<option>Option 1</option>
-							<option>Option 2</option>
-							<option>Option 3</option>
-							<option>Option 4</option>
-						</select>
-						<hr>
+						<label>Body 
+							<a href="#" class="float-right btn-add"><i class="fas fa-plus-circle"></i></a>
+						</label>
+						<ul class="sortable">
+							<li class="ui-state-default">
+								<input name="nav1" value="" placeholder="About" class="form-control mb-2">
+								<select class="frameworkOption form-control form-control" data-option="body">
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+								</select>
+								<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
+								<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
+							</li>
+							<li class="ui-state-default">
+								<input name="nav2" value="" placeholder="Portfolio" class="form-control mb-2">
+								<select class="frameworkOption form-control form-control">
+									<option>option-on</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+								</select>
+								<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
+								<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
+							</li>
+							<li class="ui-state-default">
+								<input name="nav3" value="" placeholder="Contact" class="form-control mb-2">
+								<select class="frameworkOption form-control form-control">
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+								</select>
+								<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
+								<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
+							</li>
+						</ul>
+						
 						<label>Footer</label>
 						<select class="frameworkOption form-control form-control" data-option="footer">
 							<option value="option-one">Option 1</option>
@@ -82,7 +97,8 @@
 	
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="/assets/js/scripts.js"></script>
 	</body>
 </html>

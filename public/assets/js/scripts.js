@@ -51,4 +51,29 @@ $(function() {
         $("#sitewrapper,nav,.hamburger, nav ul").removeClass("open")
 
     });
+
+    $( ".sortable" ).sortable();
+    $( ".sortable" ).disableSelection();
+
+    $(document).on("click",".btn-add",function(){
+        var html = $(".sortable li").eq(0).html();
+        $("<li>"+html+"</li>").appendTo(".sortable").find("input").attr("placeholder","");
+        if($(".sortable li").length == 1){ 
+            $(".btn-remove").addClass("disabled");  
+        } else {
+            $(".btn-remove").removeClass("disabled");  
+        }
+        return false;
+    });
+
+    $(document).on("click",".btn-remove",function(){
+        if($(".sortable li").length > 1){ $(this).parent().remove(); }
+         // remove only one
+         if($(".sortable li").length == 1){ 
+            $(".btn-remove").addClass("disabled");  
+        } else {
+            $(".btn-remove").removeClass("disabled");  
+        }
+        return false;
+    });
 });
