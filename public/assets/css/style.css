@@ -1,3 +1,41 @@
 html, body { overflow-x: hidden; height: 100%; }
 #main-content { width: 80%; float: left; overflow-x: hidden; }
 #sidebar { width: 20%; float: left; }
+label { display: block; width: 100%; }
+
+.sortable { 
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+.sortable li {
+    border: none;
+    background: none;
+    margin: 0 0 10px 0;
+    padding: 0 30px 10px 0;
+    border-bottom: 1px dotted #999;
+    position: relative;
+}
+.btn-remove { 
+    color: red !important;
+    position: absolute; 
+    right: 0px;
+    top: 17px;
+}
+.btn-remove.disabled,.btn-remove.disabled:hover {
+    color: gray !important;
+}
+.btn-remove:hover { 
+    color: #DD0000 !important; 
+    position: absolute; 
+    right: 0px;
+    top: 17px;
+}
+
+.btn-sort {
+    position: absolute; 
+    right: 3px;
+    top: 45px;
+}
+

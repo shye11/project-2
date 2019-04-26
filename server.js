@@ -34,7 +34,15 @@ require("./routes/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force:true}).then(function() {
+  db.User.create({
+    name: 'Michael Rosario',
+    username: 'michaelrosario'
+  });
+  db.Layout.create({
+   UserId: 1
+  });
+
   app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
   });
