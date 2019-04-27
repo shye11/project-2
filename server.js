@@ -43,7 +43,41 @@ db.sequelize.sync({force:true}).then(function() {
    UserId: 1
   });
 
-  app.listen(PORT, function() {
-    console.log("Server listening on: http://localhost:" + PORT);
-  });
+
+
+// PASSPORT server.js
+
+// set up ======================================================================
+// get all the tools we need
+var passport = require('passport');
+var flash    = require('connect-flash');
+
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
+
+// configuration ==============================================================
+
+// require('./config/passport')(passport); // pass passport for configuration
+
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser()); // get information from html forms
+
+// required for passport
+app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// routes ======================================================================
+require('./routes/api-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+// launch ======================================================================
+
+app.listen(PORT, function() {
+  console.log("Server listening on: http://localhost:" + PORT);
+});
 });
