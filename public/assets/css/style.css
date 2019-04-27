@@ -39,3 +39,22 @@ label { display: block; width: 100%; }
     top: 45px;
 }
 
+body#home {
+
+    background-image: url(images/home.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 500px;
+    color: white;
+}
+
+#home h1 {
+
+  padding-top: 15pc;
+}
+
+#home button {
+  shape-outside: -o-linear-gradient(oval);
+  background-color: white;
+}
