@@ -70,5 +70,10 @@ module.exports = function(app) {
     var file = req.params.file;
     res.render('partials/'+folder+'/'+file, { layout: 'elements' });
   });
+
+  app.get("/sidebars/:file?", function(req,res){
+    var file = req.params.file;
+    res.render('sidebars/'+file, { layout: 'elements' });
+  });
   
 };
