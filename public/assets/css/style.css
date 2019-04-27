@@ -62,15 +62,15 @@ body#home {
     background-size: cover;
     background-attachment: fixed;
     height: 500px;
-    color: white;
+    color: black;
 }
 
 #home h1 {
 
-  padding-top: 15pc;
+  /* padding-top: 15pc; */
 }
 
 #home button {
   shape-outside: -o-linear-gradient(oval);
-  background-color: white;
+  /* background-color: white; */
 }
