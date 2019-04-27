@@ -14,8 +14,10 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the user
-  app.get("/api/user", function(req, res) {
-
+  app.get("/api/user", isLoggedIn ,function(req, res) {
+    res.render('user.handlebars', {
+      user : req.user // get the user out of session and pass to template
+    });
   });
 
   // POST route for saving a new user. You can create a user using the data on req.body
@@ -76,4 +78,42 @@ module.exports = function(app) {
     res.render('sidebars/'+file, { layout: 'elements' });
   });
   
-};
+
+
+//PASSPORT ROUTES//
+
+// show the login form
+    app.get('/login', function(req, res) {
+
+      // render the page and pass in any flash data if it exists
+      res.render('login.handlebars', { message: req.flash('loginMessage') }); 
+    });
+
+    // process the login form
+    // app.post('/login', do all our passport stuff here);
+
+    // show the signup form
+    app.get('/signup', function(req, res) {
+
+      // render the page and pass in any flash data if it exists
+      res.render('signup.handlebars', { message: req.flash('signupMessage') });
+    });
+
+    app.get('/logout', function(req, res) {
+      req.logout();
+      res.redirect('/');
+    });
+
+
+    // route middleware to make sure a user is logged in
+    function isLoggedIn(req, res, next) {
+
+      // if user is authenticated in the session, carry on 
+      if (req.isAuthenticated())
+          return next();
+
+      // if they aren't redirect them to the home page
+      res.redirect('/');
+    }
+
+ }
