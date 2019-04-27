@@ -1,7 +1,7 @@
 {
   "local": {
     "username": "root",
-    "password": "secret",
+    "password": "root",
     "database": "project_2_db",
     "host": "localhost",
     "port": 8889,
@@ -12,7 +12,7 @@
     "password": "root",
     "database": "project_2_db",
     "host": "localhost",
-    "port": 3306,
+    "port": 8889,
     "dialect": "mysql"
   },
   "test": {
