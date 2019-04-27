@@ -9,7 +9,7 @@
   },
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "secret",
     "database": "project_2_db",
     "host": "localhost",
     "port": 8889,

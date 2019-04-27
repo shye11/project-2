@@ -34,8 +34,13 @@ module.exports = function(app) {
   });
 
   app.get("/",function(req,res) {
-    res.render('index');
+    res.render('index', { layout: 'static' });
   });
+
+  app.get("/framework",function(req,res) {
+    res.render('framework');
+  });
+
 
   app.put("/api/layout/:id", function(req,res){
     var updateObj = {};
