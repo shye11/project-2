@@ -57,7 +57,7 @@ label { display: block; width: 100%; }
 
 body#home {
 
-    background-image: url(images/home.jpg);
+    background-image: url(/assets/images/home.jpg);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
