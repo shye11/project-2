@@ -1,56 +1,33 @@
 <body id="home">
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
+<div class="container">
 
-  <h1>The Sky is the Limit</h1>
-
-  <h5>What is Yours?</h5>
-
-  <br>
-
-  <a href="/framework" class="btn btn-primary btn-lg">Start Designing</a>
-
-  
-
-        </div>
-      </div>
+<div class="jumbotron">
+  <h1 class="display-4">The Sky is the Limit. What's yours?</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <form action="/login" method="post">
+    <div>
+        <label>Username:</label>
+        <input type="text" name="username"/>
     </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" name="password"/>
+    </div>
+      <p></p>
+        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+</form>
+  <hr class="my-4">
+  <div class="card w-50">
+    <div class="card-body">
+      <h5 class="card-title">Sign-up</h5>
+        <p class="card-text">Don't have an account?</p>
+          <button type="submit" class="btn btn-primary btn-lg">Signup</button>
+      </div>
+  </div>
+</div>
 
-<div class="overlay">
-
-    <div class="login">    
-        <div class="card w-50">
-                    <div class="card-body">
-                      <h5 class="card-title">Sign-In</h5>
-                      <p class="card-text">
-                            <form>
-                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">Email address</label>
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Password</label>
-                                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                    </div>
-                                    
-                                  </form>
-                      </p>
-                      <a href="#" class="btn btn-primary">Log In</a>
-                    </div>
-                  </div>
-                  
-                  <div class="card w-50">
-                    <div class="card-body">
-                      <h5 class="card-title">Sign-up</h5>
-                      <p class="card-text">Don't have an account?</p>
-                      <a href="#" class="btn btn-primary">Register</a>
-                    </div>
-                  </div>
-    
-                </div>
-              </div>        
+</div> 
     
 </body>
