@@ -20,7 +20,7 @@
     "password": "secret",
     "database": "project_2_db",
     "host": "localhost",
-    "port": 8809,
+    "port": 8889,
     "dialect": "mysql"
   },
   "test": {
