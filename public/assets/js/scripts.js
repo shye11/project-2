@@ -64,24 +64,35 @@ $(function() {
 
     });
 
-    $( ".sortable" ).sortable();
+    $( ".sortable" ).sortable({
+        helper: "clone",
+        placeholder: "sortable-placeholder"
+    });
+
     $( ".sortable" ).disableSelection();
 
     $(document).on("click",".btn-add",function(){
         var html = $(".sortable li").eq(0).html();
-        $("<li>"+html+"</li>").appendTo(".sortable").find("input").attr("placeholder","");
+        $("<li style='display: none;'>"+html+"</li>")
+            .prependTo(".sortable")
+            .find("input")
+            .attr("placeholder","")
+            .parent()
+            .slideDown();
+        $('.sortable').sortable("refresh").sortable("refreshPositions");
         if($(".sortable li").length == 1){ 
-            $(".btn-remove").addClass("disabled");  
+            $(".btn-remove:visible").addClass("disabled");  
         } else {
-            $(".btn-remove").removeClass("disabled");  
+            $(".btn-remove:visible").removeClass("disabled");  
         }
         return false;
     });
 
     $(document).on("click",".btn-remove",function(){
-        if($(".sortable li").length > 1){ $(this).parent().remove(); }
+        if($(".sortable li:visible").length > 1){ $(this).parent().slideUp(); }
+        $('.sortable').sortable("refresh").sortable("refreshPositions");
          // remove only one
-         if($(".sortable li").length == 1){ 
+         if($(".sortable li:visible").length == 1){ 
             $(".btn-remove").addClass("disabled");  
         } else {
             $(".btn-remove").removeClass("disabled");  
