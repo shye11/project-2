@@ -1,13 +1,22 @@
 $(function() {
 
+    $(document).on("click",".backButton",function(e){
+        e.preventDefault;
+        $(".optionSidebar").hide();
+        $(".frameworkSidebar").show();
+        return false;
+    });
     // our goal is to load a form based on the element clicked
     $(".editable").on("click",function(){
-        var data = $(this).attr("data-id");
-        var url = "/forms/"+data;
-        console.log(data);
-        console.log(url);
-        $("#sidebar").load(url, function(){
-
+        $(".frameworkSidebar").hide();
+        
+        var option = $(this).attr("data-option");
+        id = 1; // user 1
+        var url = "/sidebars/"+option;
+        console.log(option);
+       
+        $(".optionSidebar").load(url, function(){
+            $(".optionSidebar").fadeIn();
         })
         return false;
     });
