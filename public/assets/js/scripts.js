@@ -8,7 +8,6 @@ $(function() {
     });
     // our goal is to load a form based on the element clicked
     $(".editable").on("click",function(){
-       
         
         var option = $(this).attr("data-option");
         id = 1; // user 1

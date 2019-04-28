@@ -11,8 +11,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     body: {
       type: DataTypes.JSON,
-      defaultValue: { options: "" }
-    },
+      defaultValue: [
+        {
+            option: "three-columns",
+            title: "About"
+        },{
+            option: "two-columns",
+            title: "Portfolio"
+        },{
+            option: "three-columns",
+            title: "Contact"
+        }
+      ]},
     footer: {
       type: DataTypes.JSON,
       defaultValue: { option: "option-one"}
