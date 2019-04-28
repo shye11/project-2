@@ -8,7 +8,7 @@ $(function() {
     });
     // our goal is to load a form based on the element clicked
     $(".editable").on("click",function(){
-        $(".frameworkSidebar").hide();
+       
         
         var option = $(this).attr("data-option");
         id = 1; // user 1
@@ -16,7 +16,8 @@ $(function() {
         console.log(option);
        
         $(".optionSidebar").load(url, function(){
-            $(".optionSidebar").fadeIn();
+            $(".frameworkSidebar").hide();
+            $(".optionSidebar").show();
         })
         return false;
     });
