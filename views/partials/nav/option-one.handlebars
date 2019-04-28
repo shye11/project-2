@@ -15,22 +15,18 @@
 		<span class="line-three"></span>
 	</a>
 
+
+
 	<ul class="main-nav">
 		<li>
 			<a href="#" class="home">Home</a>
 		</li>
 
+		{{#each navOptions}}
 		<li>
-			<a href="#" class="about">About</a>
+			<a href="#" class="page-{{lowercase title}}">{{title}}</a>
 		</li>
-
-		<li>
-			<a href="#" class="portfolio">Portfolio</a>
-		</li>
-
-		<li>
-			<a href="#" class="contact">Contact</a>
-		</li>
+		{{/each}}
 	</ul>
 
 

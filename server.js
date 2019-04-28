@@ -38,6 +38,9 @@ app.engine("handlebars", exphbs({
       } else {
           return options.fn(this);
       }
+    },
+    lowercase: function(name) {
+      return name.toLowerCase();
     }
   }
  }));
