@@ -23,8 +23,24 @@ app.use(express.static("public"));
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.engine
+app.engine("handlebars", exphbs({ 
+  defaultLayout: "main",
+  helpers: {
+    partial: function (uri,name) {
+        console.log("helper", name);
+        return uri+"/"+name.toString();
+    },
+    equal: function(lvalue, rvalue, options) {
+      if (arguments.length < 3)
+          throw new Error("Handlebars Helper equal needs 2 parameters");
+      if( lvalue!=rvalue ) {
+          return options.inverse(this);
+      } else {
+          return options.fn(this);
+      }
+    }
+  }
+ }));
 app.set("view engine", "handlebars");
 
 

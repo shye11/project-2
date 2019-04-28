@@ -40,7 +40,21 @@ module.exports = function(app) {
   });
 
   app.get("/framework",function(req,res) {
-    res.render('framework');
+    db.Layout.findAll({
+      where: {
+        UserId: 1
+      },
+      include: [
+        {
+          model: db.User
+        }
+      ]
+    }).then(function(frameworkOptions) {
+      //console.log(frameworkOptions[0].dataValues.nav.option);
+      res.render('framework',{data: frameworkOptions[0].dataValues});
+    
+    });
+    
   });
 
 
@@ -49,6 +63,11 @@ module.exports = function(app) {
     if(req.body.column == "nav"){
       updateObj = {
         nav: { "option" : req.body.option }
+      }
+    }
+    if(req.body.column == "carousel"){
+      updateObj = {
+        carousel: { "option" : req.body.option }
       }
     }
     if(req.body.column == "footer"){
