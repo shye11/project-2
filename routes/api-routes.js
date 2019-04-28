@@ -63,6 +63,11 @@ module.exports = function(app) {
         nav: { "option" : req.body.option }
       }
     }
+    if(req.body.column == "carousel"){
+      updateObj = {
+        carousel: { "option" : req.body.option }
+      }
+    }
     if(req.body.column == "footer"){
       updateObj = {
         footer: { "option" : req.body.option }
