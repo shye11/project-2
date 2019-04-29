@@ -1,15 +1,16 @@
 $(function() {
 
+    // This is the back button on the dynamic options
     $(document).on("click",".backButton",function(e){
         e.preventDefault;
         $(".optionSidebar").hide();
         $(".frameworkSidebar").show();
         return false;
     });
-    // our goal is to load a form based on the element clicked
-    $(".editable").on("click",function(){
-       
-        
+
+    // When an element is clicked, we show the specific sidebar
+    // Todo: get the current logged in UserId
+    $(".editable").on("click",function(){        
         var option = $(this).attr("data-option");
         id = 1; // user 1
         var url = "/sidebars/"+option;
@@ -22,30 +23,32 @@ $(function() {
         return false;
     });
 
-    //frameworks 
+    // This saves and dynamically updates the framework options
     $(".frameworkOption").on("change",function(){
-        var element = $(this).attr("data-option");
-        var value = $(this).find(":selected").attr("value");
-        console.log(element);
-        console.log(value);
+        var element = $(this).attr("data-option"); // get the element
+        var value = $(this).find(":selected").attr("value"); // get the option 
         var url = "/element/"+element+"/"+value;
-        $("#"+element).load(url);
+        $("#"+element).load(url,function(){
+            console.log("loaded "+element+"/"+value);
+        });
         id = 1; // user 1
+        // api to send the option to mysql
         $.ajax("/api/layout/" + id, {
             type: "PUT",
             data:{
-                    column: element,
-                    option: value
+                column: element,
+                option: value
             },
           }).then(
             function() {
+                console.log("saved "+element+"/"+value);
               //location.reload();
             }
           );
 
     });
     
-
+    // hamburger menu
     $(document).on("click",".hamburger",function(e){
         e.preventDefault();
         var currentNav = $(this);
@@ -68,10 +71,9 @@ $(function() {
         }
     });
 
+    // when the mouse leaves, hide the nav
     $("nav").on('mouseleave',function(){
-
         $("#sitewrapper,nav,.hamburger, nav ul").removeClass("open")
-
     });
 
     $( ".sortable" ).sortable({
