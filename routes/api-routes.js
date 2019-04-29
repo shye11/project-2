@@ -39,6 +39,8 @@ module.exports = function(app) {
     res.render('index', { layout: 'static' });
   });
 
+  // Load all options on the framework page
+  // TODO: we need to determine the logged in user
   app.get("/framework",function(req,res) {
     db.Layout.findAll({
       where: {
@@ -57,7 +59,8 @@ module.exports = function(app) {
     
   });
 
-
+  // Update the framework options
+  // TODO: determine whether we use the UserId or Id
   app.put("/api/layout/:id", function(req,res){
     var updateObj = {};
     if(req.body.column == "nav"){
@@ -85,13 +88,14 @@ module.exports = function(app) {
     });
   });
 
-
+  // Used to render elements for jQuery load of frameworks
   app.get("/element/:folder?/:file?", function(req,res){
     var folder = req.params.folder;
     var file = req.params.file;
     res.render('partials/'+folder+'/'+file, { layout: 'elements' });
   });
 
+  // Used to render elements for jQuery load of sidebars
   app.get("/sidebars/:file?", function(req,res){
     var file = req.params.file;
     res.render('sidebars/'+file, { layout: 'elements' });
