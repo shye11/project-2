@@ -16,7 +16,14 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
       },
-  });
+    password: {
+      type: DataTypes.STRING,
+      required: true,
+      validate: {
+        len: [1]
+    }
+  }
+});
 
   User.associate = function (models) {
     models.User.hasOne(models.Layout);

@@ -109,7 +109,7 @@ module.exports = function(app) {
     app.get('/login', function(req, res) {
 
       // render the page and pass in any flash data if it exists
-      res.render('login.handlebars', { message: req.flash('loginMessage') }); 
+      res.render('login'); 
     });
 
     // process the login form
@@ -119,13 +119,13 @@ module.exports = function(app) {
     app.get('/signup', function(req, res) {
 
       // render the page and pass in any flash data if it exists
-      res.render('signup.handlebars', { message: req.flash('signupMessage') });
+      res.render('signup');
     });
 
-    app.get('/logout', function(req, res) {
-      req.logout();
-      res.redirect('/');
-    });
+    // app.get('/logout', function(req, res) {
+    //   req.logout();
+    //   res.redirect('/');
+    // });
 
 
     // route middleware to make sure a user is logged in
