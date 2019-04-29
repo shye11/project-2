@@ -24,39 +24,17 @@
 							<a href="#" class="float-right btn-add"><i class="fas fa-plus-circle"></i></a>
 						</label>
 						<ul class="sortable">
-							<li class="ui-state-default">
-								<input name="nav1" value="" placeholder="About" class="form-control mb-2">
-								<select class="frameworkOption form-control form-control" data-option="body">
-									<option value='three-columns'>Option 1</option>
-									<option value='two-columns'>Option 2</option>
-									<option>Option 3</option>
-									<option>Option 4</option>
-								</select>
-								<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
-								<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
-							</li>
-							<li class="ui-state-default">
-								<input name="nav2" value="" placeholder="Portfolio" class="form-control mb-2">
-								<select class="frameworkOption form-control form-control">
-									<option>Option 1</option>
-									<option>Option 2</option>
-									<option>Option 3</option>
-									<option>Option 4</option>
-								</select>
-								<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
-								<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
-							</li>
-							<li class="ui-state-default">
-								<input name="nav3" value="" placeholder="Contact" class="form-control mb-2">
-								<select class="frameworkOption form-control form-control">
-									<option>Option 1</option>
-									<option>Option 2</option>
-									<option>Option 3</option>
-									<option>Option 4</option>
-								</select>
-								<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
-								<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
-							</li>
+							{{#each data.body}}
+								<li class="ui-state-default">
+									<input name="nav1" value="{{ title }}" placeholder="About" class="form-control mb-2">
+									<select class="frameworkOption form-control form-control" data-option="body">
+										<option value='three-columns' {{#equal option 'three-columns' }}SELECTED{{/equal}}>Option 1</option>
+										<option value='two-columns' {{#equal option 'two-columns' }}SELECTED{{/equal}}>Option 2</option>
+									</select>
+									<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
+									<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
+								</li>
+							{{/each}}
 						</ul>
 						
 						<label>Footer</label>
@@ -79,7 +57,7 @@
                     data-option="nav">
 
                     {{#if data.nav.option}}
-                        {{> (partial 'nav' data.nav.option) }}
+                        {{> (partial 'nav' data.nav.option) navOptions=data.body }}
                     {{else}}
                         {{> nav/option-one }}
                     {{/if}}
@@ -99,7 +77,9 @@
                 </div>
 
                 <div id="body">
-                    {{> body/three-columns}}
+                    {{#each data.body}}
+						 {{> (partial 'body' option) className=title }}
+					{{/each}}
                 </div>
 
                 <div id="footer" 

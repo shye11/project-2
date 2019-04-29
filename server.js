@@ -42,14 +42,11 @@ app.engine("handlebars", exphbs({
       } else {
           return options.fn(this);
       }
-<<<<<<< Updated upstream
-=======
     },
     lowercase: function(name) {
       // performs string operation lowercase 
       // Usage: {{lowercase "Text"}}
       return name.toLowerCase();
->>>>>>> Stashed changes
     }
   }
  }));
