@@ -17,12 +17,15 @@ module.exports = function(app, passport) {
 
   passport.serializeUser(function(user, done) {
     done(null, user.id);
-   });
+  });
    
    passport.deserializeUser(function(id, done) {
-    db.User.findById(id, function(err, user) {
-      done(err, user);
-    });
+    console.log("deserializeUser ran", id);
+    db.User.findById(id).then((user) => {
+      done(null, user);
+    }).catch(done);
+  
+
    });
 
   // GET route for getting all of the user
@@ -54,15 +57,10 @@ module.exports = function(app, passport) {
   // Load all options on the framework page
   // TODO: we need to determine the logged in user
   app.get("/framework",function(req,res) {
-    console.log("req for framework hit");
-    req.login(user, function(err) {
-      if (err) { return next(err); }
-      //return res.redirect('/users/' + req.user.username);
-      console.log("req.user",req.user);
-     });
+    console.log("req.user",req.user);
     db.Layout.findAll({
       where: {
-        UserId: 7
+        UserId: req.user.id
       },
       include: [
         {
@@ -255,12 +253,15 @@ passport.use('local-signup', new LocalStrategy(
 
       };
 
-
-
       db.User.findOne({
           where: {
             username: username
-          }
+          },
+          include: [
+            {
+              model: db.Layout
+            }
+          ]
       }).then(function(user) {
 
           if (user)
