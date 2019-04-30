@@ -58,6 +58,7 @@ module.exports = function(app, passport) {
   // TODO: we need to determine the logged in user
   app.get("/framework",function(req,res) {
     console.log("req.user",req.user);
+    if(req.user){
     db.Layout.findAll({
       where: {
         UserId: req.user.id
@@ -72,6 +73,9 @@ module.exports = function(app, passport) {
       res.render('framework',{data: frameworkOptions[0].dataValues});
     
     });
+  } else {
+    res.redirect("/login");
+  }
     
   });
 
