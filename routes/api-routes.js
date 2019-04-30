@@ -8,12 +8,22 @@
 // Grabbing our models
 
 var db = require("../models");
-var passport = require('passport');
+// var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function(app, passport) {
+
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+   });
+   
+   passport.deserializeUser(function(id, done) {
+    db.User.findById(id, function(err, user) {
+      done(err, user);
+    });
+   });
 
   // GET route for getting all of the user
   app.get("/api/user", isLoggedIn ,function(req, res) {
@@ -44,9 +54,15 @@ module.exports = function(app) {
   // Load all options on the framework page
   // TODO: we need to determine the logged in user
   app.get("/framework",function(req,res) {
+    console.log("req for framework hit");
+    req.login(user, function(err) {
+      if (err) { return next(err); }
+      //return res.redirect('/users/' + req.user.username);
+      console.log("req.user",req.user);
+     });
     db.Layout.findAll({
       where: {
-        UserId: 1
+        UserId: 7
       },
       include: [
         {
@@ -138,46 +154,7 @@ module.exports = function(app) {
 
     // show the signup form
     app.get('/signup', function(req, res) {
-     
-     /* // render the page and pass in any flash data if it exists
-      db.User.findOne({
-        where: {
-            username: req.params.username
-        }
-    }).then(function(user) {
-     
-        if (user)
-     
-        {
-            return done(null, false, {
-                message: 'That username is already taken'
-            });
-        } else
-        {
-            var userPassword = req.params.password;
-            var data =
-     
-                {
-                    name: 'jon snow',
-                    password: userPassword,
-                    username: req.body.username,
-                };
-     
-     
-            db.User.create(data).then(function(newUser, created) {
-     
-                if (!newUser) {
-                    return done(null, false);
-                }
-     
-                if (newUser) {
-                    return done(null, newUser);
-                }
-            });
-     
-        }
-     
-    });*/
+    
 
     res.render("signup");
 
@@ -189,6 +166,7 @@ module.exports = function(app) {
     // });
 
     //LOCAL SIGNIN
+  /*
 passport.use('local-signin', new LocalStrategy(
  
   {
@@ -197,9 +175,9 @@ passport.use('local-signin', new LocalStrategy(
 
       usernameField: 'email',
 
-      passwordField: 'password',
+      passwordField: 'password'
 
-      passReqToCallback: true // allows us to pass back the entire request to the callback
+      //passReqToCallback: true // allows us to pass back the entire request to the callback
 
   },
 
@@ -255,15 +233,14 @@ passport.use('local-signin', new LocalStrategy(
   }
 
 ));
+*/
 
 passport.use('local-signup', new LocalStrategy(
  
   {
 
-      username: 'username',
-
-      password: 'password',
-
+      usernameField: 'username',
+      passwordField: 'password',
       passReqToCallback: true // allows us to pass back the entire request to the callback
 
   },
@@ -299,13 +276,15 @@ passport.use('local-signup', new LocalStrategy(
           {
 
               var userPassword = password;
+              var userFullName = req.body.name;
+
+              console.log("userFullName",userFullName);
 
               var data =
 
                   {
-                      name : 'jon snow',
+                      name: userFullName,
                       username: username,
-
                       password: userPassword,
 
                   };
@@ -319,8 +298,17 @@ passport.use('local-signup', new LocalStrategy(
                   }
 
                   if (newUser) {
+                    console.log("new user created");
 
-                      return done(null, newUser);
+                      db.Layout.create({
+                        UserId: newUser.id
+                      }).then(function(){
+                        return done(null, newUser);
+                      })
+
+                     
+
+
 
                   }
 
@@ -335,8 +323,7 @@ passport.use('local-signup', new LocalStrategy(
 ));
 
 app.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/dashboard',
-
+  successRedirect: '/framework',
   failureRedirect: '/signup'
 }
 
