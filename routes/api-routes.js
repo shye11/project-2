@@ -138,7 +138,8 @@ module.exports = function(app) {
 
     // show the signup form
     app.get('/signup', function(req, res) {
-      // render the page and pass in any flash data if it exists
+     
+     /* // render the page and pass in any flash data if it exists
       db.User.findOne({
         where: {
             username: req.params.username
@@ -176,7 +177,10 @@ module.exports = function(app) {
      
         }
      
-    });
+    });*/
+
+    res.render("signup");
+
     });
 
     // app.get('/logout', function(req, res) {
@@ -184,6 +188,159 @@ module.exports = function(app) {
     //   res.redirect('/');
     // });
 
+    //LOCAL SIGNIN
+passport.use('local-signin', new LocalStrategy(
+ 
+  {
+
+      // by default, local strategy uses username and password, we will override with email
+
+      usernameField: 'email',
+
+      passwordField: 'password',
+
+      passReqToCallback: true // allows us to pass back the entire request to the callback
+
+  },
+
+
+  function(req, email, password, done) {
+
+      var User = user;
+
+      var isValidPassword = function(userpass, password) {
+
+          return bCrypt.compareSync(password, userpass);
+
+      }
+
+      User.findOne({
+          where: {
+              email: email
+          }
+      }).then(function(user) {
+
+          if (!user) {
+
+              return done(null, false, {
+                  message: 'Email does not exist'
+              });
+
+          }
+
+          if (!isValidPassword(user.password, password)) {
+
+              return done(null, false, {
+                  message: 'Incorrect password.'
+              });
+
+          }
+
+
+          var userinfo = user.get();
+          return done(null, userinfo);
+
+
+      }).catch(function(err) {
+
+          console.log("Error:", err);
+
+          return done(null, false, {
+              message: 'Something went wrong with your Signin'
+          });
+
+      });
+
+
+  }
+
+));
+
+passport.use('local-signup', new LocalStrategy(
+ 
+  {
+
+      username: 'username',
+
+      password: 'password',
+
+      passReqToCallback: true // allows us to pass back the entire request to the callback
+
+  },
+
+
+
+  function(req, username, password, done) {
+
+      var generateHash = function(password) {
+
+          return password;
+
+      };
+
+
+
+      db.User.findOne({
+          where: {
+            username: username
+          }
+      }).then(function(user) {
+
+          if (user)
+
+          {
+
+              return done(null, false, {
+                  message: 'That username is already taken'
+              });
+
+          } else
+
+          {
+
+              var userPassword = password;
+
+              var data =
+
+                  {
+                      name : 'jon snow',
+                      username: username,
+
+                      password: userPassword,
+
+                  };
+
+              db.User.create(data).then(function(newUser, created) {
+
+                  if (!newUser) {
+
+                      return done(null, false);
+
+                  }
+
+                  if (newUser) {
+
+                      return done(null, newUser);
+
+                  }
+
+              });
+
+          }
+
+      });
+
+  }
+
+));
+
+app.post('/signup', passport.authenticate('local-signup', {
+  successRedirect: '/dashboard',
+
+  failureRedirect: '/signup'
+}
+
+));
 
     // route middleware to make sure a user is logged in
     function isLoggedIn(req, res, next) {
@@ -197,3 +354,5 @@ module.exports = function(app) {
     }
 
  }
+
+
