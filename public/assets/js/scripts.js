@@ -114,3 +114,19 @@ $(function() {
         return false;
     });
 });
+
+    // $(".login-form").on("submit",function (){
+    //     $.ajax("/login", {
+    //         type: "POST",
+    //         username: $(".username").val(),
+    //         password: $(".password").val()
+    //       }).then(
+    //         function() {
+    //             console.log("login successful")
+    //           //location.reload();
+    //         }
+    //       );
+    // });
+
+
+

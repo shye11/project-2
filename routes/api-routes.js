@@ -8,6 +8,8 @@
 // Grabbing our models
 
 var db = require("../models");
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 // Routes
 // =============================================================
@@ -105,21 +107,76 @@ module.exports = function(app) {
 
 //PASSPORT ROUTES//
 
+    // passport.use(new LocalStrategy(
+    //   function(username, password, done) {
+    //     db.User.findOne({ username: username }, function (err, user) {npm 
+    //       if (err) { return done(err); }
+    //       if (!user) { return done(null, false); }
+    //       if (!user.verifyPassword(password)) { return done(null, false); }
+    //       return done(null, user);
+    //     });
+    //   }
+    // ));
+
+    
+
 // show the login form
     app.get('/login', function(req, res) {
-
       // render the page and pass in any flash data if it exists
-      res.render('login'); 
+      console.log(req);
+      res.render('login');
     });
+
+    app.post('/login', 
+      passport.authenticate('local', { failureRedirect: '/login' }),
+      function(req, res) {
+        res.redirect('/framework');
+      });
 
     // process the login form
     // app.post('/login', do all our passport stuff here);
 
     // show the signup form
     app.get('/signup', function(req, res) {
-
       // render the page and pass in any flash data if it exists
-      res.render('signup');
+      db.User.findOne({
+        where: {
+            username: req.params.username
+        }
+    }).then(function(user) {
+     
+        if (user)
+     
+        {
+            return done(null, false, {
+                message: 'That username is already taken'
+            });
+        } else
+        {
+            var userPassword = req.params.password;
+            var data =
+     
+                {
+                    name: 'jon snow',
+                    password: userPassword,
+                    username: req.body.username,
+                };
+     
+     
+            db.User.create(data).then(function(newUser, created) {
+     
+                if (!newUser) {
+                    return done(null, false);
+                }
+     
+                if (newUser) {
+                    return done(null, newUser);
+                }
+            });
+     
+        }
+     
+    });
     });
 
     // app.get('/logout', function(req, res) {

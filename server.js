@@ -62,7 +62,9 @@ require("./routes/api-routes.js")(app);
 db.sequelize.sync({force:true}).then(function() {
   db.User.create({
     name: 'Michael Rosario',
-    username: 'michaelrosario'
+    username: 'michaelrosario',
+    password: 'password'
+
   });
   db.Layout.create({
    UserId: 1
