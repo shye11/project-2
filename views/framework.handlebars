@@ -91,7 +91,7 @@
                     data-option="footer">
 
                     {{#if data.footer.option}}
-                        {{> (partial 'footer' data.footer.option) }}
+                        {{> (partial 'footer' data.footer.option) footerOptions=data.footer.customization }}
                     {{else}}
                         {{> footer/option-one }}
                     {{/if}}

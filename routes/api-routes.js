@@ -81,7 +81,7 @@ module.exports = function(app, passport) {
 
   // Update the framework options
   // TODO: determine whether we use the UserId or Id
-  app.put("/api/layout/:id", function(req,res){
+  app.put("/api/layout/", function(req,res){
     var updateObj = {};
     if(req.body.column == "nav"){
       updateObj = {
@@ -101,11 +101,58 @@ module.exports = function(app, passport) {
     console.log(updateObj);
     db.Layout.update(updateObj, {
       where: {
-        id: req.params.id
+        id: req.user.id
       }
     }).then(function(results) {
       res.json(results);
     });
+  });
+
+  app.put("/api/customization/:type", function(req,res){
+    var updateObj = {};
+    var updateType = req.params.type;
+    db.Layout.findOne({
+      where: {
+        UserId: req.user.id
+      },
+      include: [
+        {
+          model: db.User
+        }
+      ]
+    }).then(function(frameworkOptions) {
+      console.log(frameworkOptions)
+      // console.log(frameworkOptions[0].dataValues.nav.option);
+      var data = frameworkOptions.dataValues;
+      if(updateType == "nav"){ 
+        data.nav.customization = req.body;
+        updateObj = {
+          nav: data.nav
+        }
+      }
+      if(updateType == "carousel"){
+        data.carousel.customization = req.body;
+        updateObj = {
+          carousel: data.carousel
+        }
+      }
+      if(updateType == "footer"){
+        data.footer.customization = req.body;
+        updateObj = {
+          footer: data.footer
+        }
+      }
+      console.log(updateObj);
+      db.Layout.update(updateObj, {
+        where: {
+          UserId: req.user.id
+        }
+      }).then(function(results) {
+        res.json(results);
+      });
+    
+    });
+    
   });
 
   // Used to render elements for jQuery load of frameworks
