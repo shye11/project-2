@@ -3,29 +3,34 @@ module.exports = function(sequelize, DataTypes) {
   var Layout = sequelize.define("Layout", {
     nav: {
       type:  DataTypes.JSON,
-      defaultValue: { option: "option-one"}
+      defaultValue: { option: "option-one", customization: {}},
+     
     },
     carousel: {
       type: DataTypes.JSON,
-      defaultValue: { option: "option-one"}
+      defaultValue: { option: "option-one", customization: {} }
+      
     },
     body: {
       type: DataTypes.JSON,
       defaultValue: [
         {
             option: "three-columns",
-            title: "About"
+            title: "About",
+            customization: {}
         },{
             option: "two-columns",
-            title: "Portfolio"
+            title: "Portfolio",
+            customization: {}
         },{
             option: "three-columns",
-            title: "Contact"
+            title: "Contact",
+            customization: {}
         }
       ]},
     footer: {
       type: DataTypes.JSON,
-      defaultValue: { option: "option-one"}
+      defaultValue: { option: "option-one", customization: {}}
     }
   });
 

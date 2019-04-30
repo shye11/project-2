@@ -33,9 +33,9 @@ $(function() {
         $("#"+element).load(url,function(){
             console.log("loaded "+element+"/"+value);
         });
-        id = 1; // user 1
+        
         // api to send the option to mysql
-        $.ajax("/api/layout/" + id, {
+        $.ajax("/api/layout/", {
             type: "PUT",
             data:{
                 column: element,
@@ -44,6 +44,23 @@ $(function() {
           }).then(
             function() {
                 console.log("saved "+element+"/"+value);
+              //location.reload();
+            }
+          );
+
+    });
+
+    $(document).on("submit",".customizationForm",function(e){
+        e.preventDefault();
+        console.log( $( this ).serialize() );
+        
+        // api to send the option to mysql
+        $.ajax($(this).attr("action"), {
+            type: "PUT",
+            data: $(this).serializeArray(),
+          }).then(
+            function() {
+                // console.log("saved "+element+"/"+value);
               //location.reload();
             }
           );
