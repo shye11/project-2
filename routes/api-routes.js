@@ -14,7 +14,6 @@ var LocalStrategy = require('passport-local').Strategy;
 // Routes
 // =============================================================
 module.exports = function(app, passport) {
-
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
@@ -82,29 +81,62 @@ module.exports = function(app, passport) {
   // Update the framework options
   // TODO: determine whether we use the UserId or Id
   app.put("/api/layout/", function(req,res){
-    var updateObj = {};
-    if(req.body.column == "nav"){
-      updateObj = {
-        nav: { "option" : req.body.option }
-      }
-    }
-    if(req.body.column == "carousel"){
-      updateObj = {
-        carousel: { "option" : req.body.option }
-      }
-    }
-    if(req.body.column == "footer"){
-      updateObj = {
-        footer: { "option" : req.body.option }
-      }
-    }
-    console.log(updateObj);
-    db.Layout.update(updateObj, {
+    
+    db.Layout.findOne({
       where: {
-        id: req.user.id
+        UserId: req.user.id
+      },
+      include: [
+        {
+          model: db.User
+        }
+      ]
+    }).then(function(frameworkOptions){
+      var updateObj = {};
+      var data = frameworkOptions.dataValues;
+      if(req.body.column == "nav"){
+        data.nav.option = req.body.option;
+        updateObj = {
+          nav: data.nav
+        }
       }
-    }).then(function(results) {
-      res.json(results);
+      if(req.body.column == "carousel"){
+        data.carousel.option = req.body.option;
+        updateObj = {
+          carousel: data.carousel
+        }
+      }
+      if(req.body.column == "body"){
+        var bodyItems = data.body;
+      /*
+        SAMPLE DATA
+        We will replace the entire column each time something changes
+        [
+          {"title": "Portfolio", "option": "two-columns","customization": {}}, 
+          {"title": "Contact", "option": "three-columns", "customization":{}}
+          {"title": "About", "option": "three-columns", "customization": {}}, 
+        ]
+      */   
+        data.body = req.body.option;
+        updateObj = {
+          body: data.body
+        }
+      }
+      if(req.body.column == "footer"){
+        data.footer.option = req.body.option;
+        updateObj = {
+          footer: data.footer
+        }
+      }
+     
+      console.log("updateObj",updateObj);
+      db.Layout.update(updateObj, {
+        where: {
+          id: req.user.id
+        }
+      }).then(function(results) {
+        res.json(results);
+      });
     });
   });
 
@@ -142,7 +174,7 @@ module.exports = function(app, passport) {
           footer: data.footer
         }
       }
-      console.log(updateObj);
+      console.log("updateObj",updateObj);
       db.Layout.update(updateObj, {
         where: {
           UserId: req.user.id
