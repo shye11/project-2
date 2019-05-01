@@ -1,10 +1,21 @@
- <div class="footer-basic footerBlack"> {{footerOptions.instagram}}
+ <div class="footer-basic footerBlack"> 
         <footer>
             <div class="social">
-				<a href="#"><i class="fab fa-instagram"></i></a>
-				<a href="#"><i class="fab fa-snapchat-ghost"></i></a>
-				<a href="#"><i class="fab fa-twitter"></i></a>
-				<a href="#"><i class="fab fa-facebook-f"></i></a>
+			  {{#if footerOptions.instagram}}
+              <a href="{{footerOptions.instagram}}"><i class="fab fa-instagram"></i></a>
+			  {{/if}}
+              {{#if footerOptions.snapchat}}
+              <a href="{{footerOptions.snapchat}}"><i class="fab fa-snapchat-ghost"></i></a>
+			  {{/if}}
+              {{#if footerOptions.twitter}}
+              <a href="{{footerOptions.twitter}}"><i class="fab fa-twitter"></i></a>
+			  {{/if}}
+              {{#if footerOptions.facebook}}
+              <a href="{{footerOptions.facebook}}"><i class="fab fa-facebook-f"></i></a>
+			  {{/if}}
+              {{#if footerOptions.linkedIn}}
+              <a href="{{footerOptions.linkedIn}}"><i class="fab fa-linkedin"></i></a>
+			  {{/if}}
 			</div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Home</a></li>
