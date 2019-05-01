@@ -7,6 +7,14 @@
     "port": 3306,
     "dialect": "mysql"
   },
+    "pascal": {
+      "username": "root",
+      "password": "root",
+      "database": "project_2_db",
+      "host": "localhost",
+      "port": 8682,
+      "dialect": "mysql"
+    },
   "local": {
     "username": "root",
     "password": "root",
