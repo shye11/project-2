@@ -46,15 +46,20 @@ app.engine("handlebars", exphbs({
     lowercase: function(name) {
       // performs string operation lowercase 
       // Usage: {{lowercase "Text"}}
-      return name.toLowerCase();
+      return name.toLowerCase().replace(/\s/g,'-');
+    },
+    stringify: function(data){
+      // Use this tool to output JSON
+      return JSON.stringify(data);
     }
+
   }
  }));
 app.set("view engine", "handlebars");
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({}).then(function() {
+db.sequelize.sync().then(function() {
   /*
   db.User.create({
     name: 'Michael Rosario',

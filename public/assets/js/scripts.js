@@ -95,9 +95,37 @@ $(function() {
         $("#sitewrapper,nav,.hamburger, nav ul").removeClass("open")
     });
 
+    var temporaryBody = {};
+    var bodySample = {
+        title: '',
+        option: 'option-one',
+        customization: {}
+    }
+
     $( ".sortable" ).sortable({
         helper: "clone",
-        placeholder: "sortable-placeholder"
+        placeholder: "sortable-placeholder",
+        start: function (event, ui) {
+            var currPos1 = ui.item.index();
+            console.log("currPos1",currPos1);
+            temporaryBody = body[currPos1];
+            body.splice(currPos1,1); // remove 1 item from index
+        },
+        stop: function (event, ui) {
+            var currPos2 = ui.item.index();
+            console.log("currPos2",currPos2);
+            body.splice(currPos2, 0, temporaryBody); // insert item into index and delete none
+        },
+        update: function(event, ui){
+            var items = [];
+            $(".sortable li input:visible").each(function(){
+                items.push($(this).val());
+            });
+            var sortedIDs = $( ".sortable" ).sortable( "toArray" );
+            console.log("sortedIDs",sortedIDs);
+            console.log(items);
+            console.log(body);
+        }
     });
 
     $( ".sortable" ).disableSelection();
@@ -105,11 +133,16 @@ $(function() {
     $(document).on("click",".btn-add",function(){
         var html = $(".sortable li").eq(0).html();
         $("<li style='display: none;'>"+html+"</li>")
-            .prependTo(".sortable")
+            .appendTo(".sortable")
             .find("input")
+            .attr("value","")
             .attr("placeholder","")
             .parent()
             .slideDown();
+        
+        body.push(bodySample);
+
+        
         $('.sortable').sortable("refresh").sortable("refreshPositions");
         if($(".sortable li").length == 1){ 
             $(".btn-remove:visible").addClass("disabled");  
@@ -120,7 +153,12 @@ $(function() {
     });
 
     $(document).on("click",".btn-remove",function(){
-        if($(".sortable li:visible").length > 1){ $(this).parent().slideUp(); }
+        if($(".sortable li:visible").length > 1){ 
+            $(this).parent().slideUp(); 
+            var index = $(this).parent().index();
+            body.splice(index,1);
+            console.log(body);
+        }
         $('.sortable').sortable("refresh").sortable("refreshPositions");
          // remove only one
          if($(".sortable li:visible").length == 1){ 
@@ -147,3 +185,8 @@ $(function() {
 
 
 
+/*
+TODO:
+    1. create function/route to save to DB
+    2. create update the user input
+*/

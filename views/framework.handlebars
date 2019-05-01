@@ -26,8 +26,8 @@
 						<ul class="sortable">
 							{{#each data.body}}
 								<li class="ui-state-default">
-									<input name="nav1" value="{{ title }}" placeholder="About" class="form-control mb-2">
-									<select class="frameworkOption form-control form-control" data-option="body">
+									<input name="{{lowercase title }}" value="{{ title }}" placeholder="Page Name" class="form-control mb-2">
+									<select name="{{lowercase title }}" class="bodyOption form-control form-control" data-option="body">
 										<option value='three-columns' {{#equal option 'three-columns' }}SELECTED{{/equal}}>Option 1</option>
 										<option value='two-columns' {{#equal option 'two-columns' }}SELECTED{{/equal}}>Option 2</option>
 										<option value="one-text-column" {{#equal option 'one-text-column'}}SELECTED{{/equal}}>Option 3</option>
@@ -103,3 +103,8 @@
 
 
 
+<script>
+
+	var body = {{{stringify data.body}}};
+
+</script>
