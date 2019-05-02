@@ -184,14 +184,6 @@ module.exports = function(app, passport) {
     res.render("login");
   });
 
-  // app.post(
-  //   "/login",
-  //   passport.authenticate("local", { failureRedirect: "/login" }),
-  //   function(req, res) {
-  //     res.redirect("/framework");
-  //   }
-  // );
-
   // show the signup form
   app.get("/signup", function(req, res) {
     res.render("signup");
@@ -204,6 +196,11 @@ module.exports = function(app, passport) {
       failureRedirect: "/signup"
     })
   );
+
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {
