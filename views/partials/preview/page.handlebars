@@ -34,7 +34,7 @@
                     data-option="footer">
 
                     {{#if data.footer.option}}
-                        {{> (partial 'footer' data.footer.option) footerOptions=data.footer.customization }}
+                        {{> (partial 'footer' data.footer.option) footerOptions=data.footer.customization navOptions=data.body}}
                     {{else}}
                         {{> footer/option-one }}
                     {{/if}}

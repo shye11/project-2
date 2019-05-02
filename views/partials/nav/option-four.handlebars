@@ -10,21 +10,11 @@
 	</a>
 
 	<ul class="main-nav">
-		<li>
-			<a href="#" class="home">Home</a>
-		</li>
-
-		<li>
-			<a href="#" class="about">About</a>
-		</li>
-
-		<li>
-			<a href="#" class="portfolio">Portfolio</a>
-		</li>
-
-		<li>
-			<a href="#" class="contact">Contact</a>
-		</li>
+		{{#each navOptions}}
+			<li>
+				<a href="#" class="jumper" data-target="page-{{lowercase title}}">{{title}}</a>
+			</li>
+		{{/each}}
 	</ul>
 
 
