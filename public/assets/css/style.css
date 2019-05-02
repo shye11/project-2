@@ -74,3 +74,10 @@ body#home {
   shape-outside: -o-linear-gradient(oval);
   /* background-color: white; */
 }
+
+.extra-options {
+
+    margin: 5px;
+    float: right;
+    
+}
