@@ -61,7 +61,7 @@ app.set("view engine", "handlebars");
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force:true}).then(function() {
   /*
   db.User.create({
     name: 'Michael Rosario',
@@ -78,7 +78,6 @@ db.sequelize.sync().then(function() {
 
   // set up ======================================================================
   // get all the tools we need
-  // var passport = require('passport');
   var passport = require("./routes/passport");
   var flash = require("connect-flash");
 
@@ -88,8 +87,6 @@ db.sequelize.sync().then(function() {
   var session = require("express-session");
 
   // configuration ==============================================================
-
-  // require('./config/passport')(passport); // pass passport for configuration
 
   // set up our express application
   app.use(morgan("dev")); // log every request to the console

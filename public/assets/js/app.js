@@ -29,10 +29,6 @@ $(function() {
     $(".frameworkOption").on("change",function(){
         var element = $(this).attr("data-option"); // get the element
         var value = $(this).find(":selected").attr("value"); // get the option 
-        var url = "/element/"+element+"/"+value;
-        $("#"+element).load(url,function(){
-            console.log("loaded "+element+"/"+value);
-        });
         
         // api to send the option to mysql
         $.ajax("/api/layout/", {
@@ -43,8 +39,8 @@ $(function() {
             },
           }).then(
             function() {
-                console.log("saved "+element+"/"+value);
-              location.reload(true);
+
+                getPage();
             }
           );
 
@@ -75,7 +71,7 @@ $(function() {
     var temporaryBody = {};
     var bodySample = {
         title: '',
-        option: 'option-one',
+        option: 'two-columns',
         customization: {}
     }
 
@@ -92,6 +88,7 @@ $(function() {
             var currPos2 = ui.item.index();
             console.log("currPos2",currPos2);
             body.splice(currPos2, 0, temporaryBody); // insert item into index and delete none
+            saveBodyOptions(body);
         },
         update: function(event, ui){
             var items = [];
@@ -101,7 +98,7 @@ $(function() {
             var sortedIDs = $( ".sortable" ).sortable( "toArray" );
             console.log("sortedIDs",sortedIDs);
             console.log(items);
-            console.log(body);
+          
         }
     });
 
@@ -118,6 +115,7 @@ $(function() {
             .slideDown();
         
         body.push(bodySample);
+        saveBodyOptions(body);
 
         $('.sortable').sortable("refresh").sortable("refreshPositions");
         if($(".sortable li").length == 1){ 
@@ -142,22 +140,51 @@ $(function() {
         } else {
             $(".btn-remove").removeClass("disabled");  
         }
+        saveBodyOptions(body);
         return false;
     });
-});
 
-    // $(".login-form").on("submit",function (){
-    //     $.ajax("/login", {
-    //         type: "POST",
-    //         username: $(".username").val(),
-    //         password: $(".password").val()
-    //       }).then(
-    //         function() {
-    //             console.log("login successful")
-    //           //location.reload();
-    //         }
-    //       );
-    // });
+    $(document).on("blur",".bodyInput",function(){
+
+        var index = $(this).parent().index();
+        body[index].title = $(this).val();
+        saveBodyOptions(body);
+
+    });
+
+    $(document).on("change",".bodyOption",function(){
+
+        var index = $(this).parent().index();
+        body[index].title = $(this).val();
+        saveBodyOptions(body);
+        
+    });
+
+
+    function saveBodyOptions(arr) {
+        // api to send the option to mysql
+        console.log("data",arr);
+        $.ajax("/api/bodyOptions", {
+            type: "PUT",
+            data: {body:arr},
+          }).then(
+            function() {
+
+                getPage();
+                
+            }
+          );
+    }
+
+    function getPage(){
+        $("#main-content").empty();
+        $("#main-content").load("element/preview/page",function(){
+
+        });
+    }
+
+
+});
 
 
 

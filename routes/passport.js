@@ -73,9 +73,6 @@ passport.use(
     },
 
     function(req, username, password, done) {
-      var generateHash = function(password) {
-        return password;
-      };
 
       db.User.findOne({
         where: {

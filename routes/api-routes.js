@@ -57,6 +57,19 @@ module.exports = function(app, passport) {
     }
   });
 
+  app.put("/api/bodyOptions", function(req, res) {
+    db.Layout.update({
+      body: req.body.body
+    },{
+      where: {
+        id: req.user.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  
+  });
+
   // Update the framework options
   // TODO: determine whether we use the UserId or Id
   app.put("/api/layout/", function(req, res) {
@@ -166,9 +179,23 @@ module.exports = function(app, passport) {
 
   // Used to render elements for jQuery load of frameworks
   app.get("/element/:folder?/:file?", function(req, res) {
-    var folder = req.params.folder;
-    var file = req.params.file;
-    res.render("partials/" + folder + "/" + file, { layout: "elements" });
+
+    db.Layout.findAll({
+      where: {
+        UserId: req.user.id
+      },
+      include: [
+        {
+          model: db.User
+        }
+      ]
+    }).then(function(frameworkOptions){
+      
+      var folder = req.params.folder;
+      var file = req.params.file;
+      res.render("partials/" + folder + "/" + file, { layout: "elements", data: frameworkOptions[0].dataValues });
+    });
+   
   });
 
   // Used to render elements for jQuery load of sidebars
@@ -184,14 +211,6 @@ module.exports = function(app, passport) {
     res.render("login");
   });
 
-  // app.post(
-  //   "/login",
-  //   passport.authenticate("local", { failureRedirect: "/login" }),
-  //   function(req, res) {
-  //     res.redirect("/framework");
-  //   }
-  // );
-
   // show the signup form
   app.get("/signup", function(req, res) {
     res.render("signup");
@@ -204,6 +223,11 @@ module.exports = function(app, passport) {
       failureRedirect: "/signup"
     })
   );
+
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {

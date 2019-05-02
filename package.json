@@ -1,7 +1,6 @@
 {
   "name": "orm-to-sequelize",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.19.0",
     "connect-flash": "~0.1.1",
@@ -25,6 +25,17 @@
     "nodemon": "^1.18.11",
     "passport": "~0.3.2",
     "passport-local": "^1.0.0",
-    "sequelize": "^4.41.2"
-  }
+    "sequelize": "^4.41.2",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shye11/project-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shye11/project-2/issues"
+  },
+  "homepage": "https://github.com/shye11/project-2#readme",
+  "description": ""
 }
