@@ -180,6 +180,7 @@ body#home #main-content { width: 100%; }
 
 #main { padding-top: 50px; }
 #main #sidebar { background: rgba(199,199,199,0.3); }
+.trumbowyg-editor { background: #FFF; }
 #main .backButton { 
     margin: 20px 0 30px 0;
     display: inline-block;
@@ -265,8 +266,6 @@ form.error input { border: 2px solid #FF0000; }
 }
 
 button.button.btn-primary { padding: 5px 30px; border-radius: 3px; }
-
-
 @media(max-width: 960px){
     .cta-signup { 
         border-right: none; padding: 0 0 20px 0; width: 100%; }

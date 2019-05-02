@@ -1,25 +1,37 @@
- <div id="page-{{lowercase title}}" data-cols="3" class="container">
- <div class="row">
+ <div id="page-{{lowercase title}}" data-cols="3"  data-index={{index}} class="container bodyEditable">
+<div class="row">
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
+          {{#if customization.columnOne }}
+            {{{ customization.columnOne }}}
+          {{else}}      
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+          {{/if}} 
         </div>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
+          {{#if customization.columnTwo }}
+            {{{ customization.columnTwo }}}
+          {{else}}      
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+          {{/if}}
         </div>
       </div>
     </div>
     <div class="col-sm-4">
             <div class="card">
               <div class="card-body">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{#if customization.columnThree }}
+                  {{{ customization.columnThree }}}
+                {{else}}      
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{/if}}
               </div>
             </div>
           </div>
-  </div>
-  </div>
+</div>
+</div>

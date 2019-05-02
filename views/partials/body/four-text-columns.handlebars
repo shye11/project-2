@@ -1,21 +1,37 @@
 <!-- four columns -->
-    <div id="page-{{lowercase title}}" class="container">
+    <div id="page-{{lowercase title}}" data-cols="4" data-index={{index}} class="container bodyEditable">
         <div class="row">
             <div class="col-md-3">
-                <h5>Column 1</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{#if customization.columnOne }}
+                    {{{ customization.columnOne }}}
+                {{else}}
+                    <h5>Column 1</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{/if}}            
             </div>
             <div class="col-md-3">
-                <h5>Column 2</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{#if customization.columnTwo }}
+                    {{{ customization.columnTwo }}}
+                {{else}}
+                    <h5>Column 2</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{/if}}   
+              </div>
+            <div class="col-md-3">
+                {{#if customization.columnThree }}
+                    {{{ customization.columnThree }}}
+                {{else}}
+                    <h5>Column 3</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{/if}} 
             </div>
             <div class="col-md-3">
-                <h5>Column 3</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-            </div>
-            <div class="col-md-3">
-                <h5>Column 4</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{#if customization.columnFour }}
+                    {{{ customization.columnFour }}}
+                {{else}}
+                    <h5>Column 4</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{/if}}             
             </div>
         </div>
     </div>

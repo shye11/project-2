@@ -1,9 +1,13 @@
  <!-- one column  -->
-    <div id="page-{{lowercase title}}" data-cols="1" class="container">
+    <div id="page-{{lowercase title}}" data-cols="1"  data-index={{index}} class="container bodyEditable">
         <div class="row">
             <div class="col-md-12">
-                <h5>One Column</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{#if customization.columnOne }}
+                    {{{ customization.columnOne }}}
+                {{else}}
+                    <h5>Column 1</h5>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{/if}}                 
             </div>
         </div>
     </div>
