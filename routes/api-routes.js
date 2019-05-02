@@ -9,24 +9,11 @@
 
 var db = require("../models");
 // var passport = require('passport');
-var LocalStrategy = require("passport-local").Strategy;
+// var LocalStrategy = require("passport-local").Strategy;
 
 // Routes
 // =============================================================
 module.exports = function(app, passport) {
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    console.log("deserializeUser ran", id);
-    db.User.findById(id)
-      .then(user => {
-        done(null, user);
-      })
-      .catch(done);
-  });
-
   // GET route for getting all of the user
   app.get("/api/user", isLoggedIn, function(req, res) {
     res.render("user.handlebars", {
@@ -210,116 +197,6 @@ module.exports = function(app, passport) {
     res.render("signup");
   });
 
-  //LOCAL SIGNIN
-
-  passport.use(
-    "local-signin",
-    new LocalStrategy(
-      {
-        usernameField: "username",
-        passwordField: "password",
-        passReqToCallback: true
-      },
-
-      function(req, username, password, done) {
-
-        // var isValidPassword = function(userpass, password) {
-        //   return bCrypt.compareSync(password, userpass);
-        // };
-
-        db.User.findOne({
-          where: {
-            username: username
-          }
-        })
-          .then(function(user) {
-            if (!user) {
-              return done(null, false, {
-                message: "Username does not exist"
-              });
-            }
-
-            // if (!isValidPassword(user.password, password)) {
-            //   return done(null, false, {
-            //     message: "Incorrect password."
-            //   });
-            // }
-
-            var userinfo = user.get();
-            return done(null, userinfo);
-          })
-          .catch(function(err) {
-            console.log("Error:", err);
-
-            return done(null, false, {
-              message: "Something went wrong with your Signin"
-            });
-          });
-      }
-    )
-  );
-
-  passport.use(
-    "local-signup",
-    new LocalStrategy(
-      {
-        usernameField: "username",
-        passwordField: "password",
-        passReqToCallback: true // allows us to pass back the entire request to the callback
-      },
-
-      function(req, username, password, done) {
-        var generateHash = function(password) {
-          return password;
-        };
-
-        db.User.findOne({
-          where: {
-            username: username
-          },
-          include: [
-            {
-              model: db.Layout
-            }
-          ]
-        }).then(function(user) {
-          if (user) {
-            return done(null, false, {
-              message: "That username is already taken"
-            });
-          } else {
-            var userPassword = password;
-            var userFullName = req.body.name;
-
-            console.log("userFullName", userFullName);
-
-            var data = {
-              name: userFullName,
-              username: username,
-              password: userPassword
-            };
-
-            db.User.create(data).then(function(newUser, created) {
-              if (!newUser) {
-                return done(null, false);
-              }
-
-              if (newUser) {
-                console.log("new user created");
-
-                db.Layout.create({
-                  UserId: newUser.id
-                }).then(function() {
-                  return done(null, newUser);
-                });
-              }
-            });
-          }
-        });
-      }
-    )
-  );
-
   app.post(
     "/signup",
     passport.authenticate("local-signup", {
@@ -337,23 +214,20 @@ module.exports = function(app, passport) {
     res.redirect("/");
   }
 
+  app.post(
+    "/login",
+    passport.authenticate("local-signin", {
+      successRedirect: "/framework",
+      failureRedirect: "/login"
+    })
+  );
 
+  // route middleware to make sure a user is logged in
+  function isLoggedIn(req, res, next) {
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated()) return next();
 
-app.post(
-  "/login",
-  passport.authenticate("local-signin", {
-    successRedirect: "/framework",
-    failureRedirect: "/login"
-  })
-);
-
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-  // if user is authenticated in the session, carry on
-  if (req.isAuthenticated()) return next();
-
-  // if they aren't redirect them to the home page
-  res.redirect("/");
-}
-
-}
+    // if they aren't redirect them to the home page
+    res.redirect("/");
+  }
+};
