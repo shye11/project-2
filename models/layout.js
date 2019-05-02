@@ -17,15 +17,30 @@ module.exports = function(sequelize, DataTypes) {
         {
             option: "three-columns",
             title: "About",
-            customization: {},
+            customization: {
+              columnOne: '',
+              columnTwo: '',
+              columnThree: '',
+              columnFour: '',
+            },
         },{
             option: "two-columns",
             title: "Portfolio",
-            customization: {},
+            customization: {
+              columnOne: '',
+              columnTwo: '',
+              columnThree: '',
+              columnFour: '',
+            },
         },{
             option: "three-columns",
             title: "Contact",
-            customization: {},
+            customization: {
+              columnOne: '',
+              columnTwo: '',
+              columnThree: '',
+              columnFour: '',
+            },
         }
       ]},
     footer: {

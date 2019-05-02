@@ -72,7 +72,12 @@ $(function() {
     var bodySample = {
         title: '',
         option: 'two-columns',
-        customization: {}
+        customization: {
+            columnOne: '',
+            columnTwo: '',
+            columnThree: '',
+            columnFour: '',
+        }
     }
 
     $( ".sortable" ).sortable({
