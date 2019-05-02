@@ -204,27 +204,15 @@ module.exports = function(app, passport) {
     res.render("sidebars/" + file, { layout: "elements" });
   });
 
-  // show the login form
-  app.get("/login", function(req, res) {
-    // render the page and pass in any flash data if it exists
-    console.log(req);
-    res.render("login");
-  });
 
-  // show the signup form
-  app.get("/signup", function(req, res) {
-    res.render("signup");
-  });
+app.post("/signup",
+  passport.authenticate("local-signup", {
+    successRedirect: "/framework",
+    failureRedirect: "/signup"
+  })
+);
 
-  app.post(
-    "/signup",
-    passport.authenticate("local-signup", {
-      successRedirect: "/framework",
-      failureRedirect: "/signup"
-    })
-  );
-
-  app.get('/logout', function(req, res) {
+app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
@@ -238,8 +226,7 @@ module.exports = function(app, passport) {
     res.redirect("/");
   }
 
-  app.post(
-    "/login",
+  app.post("/login",
     passport.authenticate("local-signin", {
       successRedirect: "/framework",
       failureRedirect: "/login"
