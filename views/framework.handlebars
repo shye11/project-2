@@ -1,110 +1,127 @@
+<div id='extra-options'>
+	<a class="btn btn-large btn-primary extra-options" href="/">Preview</a>
+	<a class="btn btn-large btn-primary extra-options" href="/">Export Code</a>
+	<a class="btn btn-large btn-primary extra-options" href="/">Logout</a>
+</div>
+
 <div id="sidebar">
-			<div class="optionSidebar container"></div>
-			<div class="frameworkSidebar container">
-				<div class="row">
-					<div class="col-md-12">
+	<div class="optionSidebar container"></div>
+	<div class="frameworkSidebar container">
+		<div class="row">
+			<div class="col-md-12">
 
-						<br>
+				<br>
 
-						<label class="mt-10">Navigation</label>
-						<select class="frameworkOption form-control form-control" data-option="nav">
-							<option value="option-one" {{#equal data.nav.option 'option-one' }}SELECTED{{/equal}}>Option 1</option>
-							<option value="option-two" {{#equal data.nav.option 'option-two' }}SELECTED{{/equal}}>Option 2</option>
-							<option value="option-three" {{#equal data.nav.option 'option-three' }}SELECTED{{/equal}}>Option 3</option>
-							<option value="option-four" {{#equal data.nav.option 'option-four' }}SELECTED{{/equal}}>Option 4</option>
+				<label class="mt-10">Navigation</label>
+				<select class="frameworkOption form-control form-control" data-option="nav">
+					<option value="option-one" {{#equal data.nav.option 'option-one' }}SELECTED{{/equal}}>Option 1
+					</option>
+					<option value="option-two" {{#equal data.nav.option 'option-two' }}SELECTED{{/equal}}>Option 2
+					</option>
+					<option value="option-three" {{#equal data.nav.option 'option-three' }}SELECTED{{/equal}}>Option 3
+					</option>
+					<option value="option-four" {{#equal data.nav.option 'option-four' }}SELECTED{{/equal}}>Option 4
+					</option>
+				</select>
+				<hr>
+				<label>Carousel</label>
+				<select class="frameworkOption form-control form-control" data-option="carousel">
+					<option value='option-one' {{#equal data.carousel.option 'option-one' }}SELECTED{{/equal}}>Option 1
+					</option>
+					<option value='option-two' {{#equal data.carousel.option 'option-two' }}SELECTED{{/equal}}>Option 2
+					</option>
+				</select>
+				<hr>
+				<label>Body
+					<a href="#" class="float-right btn-add"><i class="fas fa-plus-circle"></i></a>
+				</label>
+				<ul class="sortable">
+					{{#each data.body}}
+					<li class="ui-state-default">
+						<input name="{{lowercase title }}" value="{{ title }}" placeholder="Page Name"
+							class="form-control mb-2">
+						<select name="{{lowercase title }}" class="bodyOption form-control form-control"
+							data-option="body">
+							<option value='three-columns' {{#equal option 'three-columns' }}SELECTED{{/equal}}>Option 1
+							</option>
+							<option value='two-columns' {{#equal option 'two-columns' }}SELECTED{{/equal}}>Option 2
+							</option>
+							<option value="one-text-column" {{#equal option 'one-text-column'}}SELECTED{{/equal}}>Option
+								3</option>
+							<option value="two-text-columns" {{#equal option 'two-text-columns'}}SELECTED{{/equal}}>
+								Option 4</option>
+							<option value="three-text-columns" {{#equal option 'three-text-columns'}}SELECTED{{/equal}}>
+								Option 5</option>
+							<option value="four-text-columns" {{#equal option 'four-text-columns'}}SELECTED{{/equal}}>
+								Option 6</option>
 						</select>
-						<hr>
-						<label>Carousel</label>
-						<select class="frameworkOption form-control form-control" data-option="carousel">
-							<option value='option-one' {{#equal data.carousel.option 'option-one' }}SELECTED{{/equal}}>Option 1</option>
-							<option value='option-two' {{#equal data.carousel.option 'option-two' }}SELECTED{{/equal}}>Option 2</option>
-						</select>
-						<hr>
-						<label>Body 
-							<a href="#" class="float-right btn-add"><i class="fas fa-plus-circle"></i></a>
-						</label>
-						<ul class="sortable">
-							{{#each data.body}}
-								<li class="ui-state-default">
-									<input name="{{lowercase title }}" value="{{ title }}" placeholder="Page Name" class="form-control mb-2">
-									<select name="{{lowercase title }}" class="bodyOption form-control form-control" data-option="body">
-										<option value='three-columns' {{#equal option 'three-columns' }}SELECTED{{/equal}}>Option 1</option>
-										<option value='two-columns' {{#equal option 'two-columns' }}SELECTED{{/equal}}>Option 2</option>
-										<option value="one-text-column" {{#equal option 'one-text-column'}}SELECTED{{/equal}}>Option 3</option>
-										<option value="two-text-columns" {{#equal option 'two-text-columns'}}SELECTED{{/equal}}>Option 4</option>
-										<option value="three-text-columns"{{#equal option 'three-text-columns'}}SELECTED{{/equal}}>Option 5</option>
-										<option value="four-text-columns"{{#equal option 'four-text-columns'}}SELECTED{{/equal}}>Option 6</option>
-									</select>
-									<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
-									<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
-								</li>
-							{{/each}}
-						</ul>
-						
-						<label>Footer</label>
-						<select class="frameworkOption form-control form-control" data-option="footer">
-							<option value="option-one" {{#equal data.footer.option 'option-one' }}SELECTED{{/equal}}>Option 1</option>
-							<option value="option-two" {{#equal data.footer.option 'option-two' }}SELECTED{{/equal}}>Option 2</option>
-							<option value="option-three" {{#equal data.footer.option 'option-three' }}SELECTED{{/equal}}>Option 3</option>
-						
-						</select>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-		<div id="main-content">
-			<div id="sitewrapper">
-                <div id="nav" 
-                    class="editable"
-                    data-option="nav">
-
-                    {{#if data.nav.option}}
-                        {{> (partial 'nav' data.nav.option) navOptions=data.body }}
-                    {{else}}
-                        {{> nav/option-one }}
-                    {{/if}}
-            
-                </div>
-
-                <div id="carousel" 
-                    class="editable"
-                    data-option="carousel">
-
-                    {{#if data.carousel.option}}
-                        {{> (partial 'carousel' data.carousel.option) }}
-                    {{else}}
-                        {{> carousel/option-one }}
-                    {{/if}}
-
-                </div>
-
-                <div id="body">
-                    {{#each data.body}}
-						 {{> (partial 'body' option) className=title }}
+						<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
+						<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
+					</li>
 					{{/each}}
-                </div>
+				</ul>
 
-                <div id="footer" 
-                    class="editable"
-                    data-option="footer">
+				<label>Footer</label>
+				<select class="frameworkOption form-control form-control" data-option="footer">
+					<option value="option-one" {{#equal data.footer.option 'option-one' }}SELECTED{{/equal}}>Option 1
+					</option>
+					<option value="option-two" {{#equal data.footer.option 'option-two' }}SELECTED{{/equal}}>Option 2
+					</option>
+					<option value="option-three" {{#equal data.footer.option 'option-three' }}SELECTED{{/equal}}>Option
+						3</option>
 
-                    {{#if data.footer.option}}
-                        {{> (partial 'footer' data.footer.option) footerOptions=data.footer.customization }}
-                    {{else}}
-                        {{> footer/option-one }}
-                    {{/if}}
-
-                </div>
-
+				</select>
 			</div>
 		</div>
+
+	</div>
+
+</div>
+<div id="main-content">
+	<div id="sitewrapper">
+		<div id="nav" class="editable" data-option="nav">
+
+			{{#if data.nav.option}}
+			{{> (partial 'nav' data.nav.option) navOptions=data.body }}
+			{{else}}
+			{{> nav/option-one }}
+			{{/if}}
+
+		</div>
+
+		<div id="carousel" class="editable" data-option="carousel">
+
+			{{#if data.carousel.option}}
+			{{> (partial 'carousel' data.carousel.option) }}
+			{{else}}
+			{{> carousel/option-one }}
+			{{/if}}
+
+		</div>
+
+		<div id="body">
+			{{#each data.body}}
+			{{> (partial 'body' option) className=title }}
+			{{/each}}
+		</div>
+
+		<div id="footer" class="editable" data-option="footer">
+
+			{{#if data.footer.option}}
+			{{> (partial 'footer' data.footer.option) footerOptions=data.footer.customization }}
+			{{else}}
+			{{> footer/option-one }}
+			{{/if}}
+
+		</div>
+
+	</div>
+</div>
 
 
 
 <script>
 
-	var body = {{{stringify data.body}}};
+	var body = {{{ stringify data.body }}};
 
 </script>
