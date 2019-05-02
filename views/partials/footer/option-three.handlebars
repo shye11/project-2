@@ -1,11 +1,11 @@
   <div class="footer-basic footerWhite"> 
         <footer>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Portfolio</a></li>
-                <li class="list-inline-item"><a href="#">Contact</a></li>
-                <li class="list-inline-item"><a href="#">Disclaimer</a></li>
+                {{#each navOptions}}
+                  <li class="list-inline-item">
+                    <a href="#" class="jumper" data-target="page-{{lowercase title}}">{{title}}</a>
+                  </li>
+                {{/each}}
             </ul>
             <div class="social">
              {{#if footerOptions.instagram}}

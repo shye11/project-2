@@ -28,4 +28,10 @@ $(function() {
         $("#sitewrapper,nav,.hamburger, nav ul").removeClass("open")
     });
 
+    $(".jumper").on("click",function(){
+        var target = $(this).attr("data-target");
+        $("html, body").animate({ scrollTop: $('#'+target).height() }, 1000);
+        return false;
+    });
+
 });

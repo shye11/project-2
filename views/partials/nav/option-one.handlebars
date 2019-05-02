@@ -18,14 +18,10 @@
 
 
 	<ul class="main-nav">
-		<li>
-			<a href="#" class="home">Home</a>
-		</li>
-
 		{{#each navOptions}}
-		<li>
-			<a href="#" class="page-{{lowercase title}}">{{title}}</a>
-		</li>
+			<li>
+				<a href="#" class="jumper" data-target="page-{{lowercase title}}">{{title}}</a>
+			</li>
 		{{/each}}
 	</ul>
 

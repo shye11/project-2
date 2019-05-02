@@ -155,7 +155,7 @@ $(function() {
     $(document).on("change",".bodyOption",function(){
 
         var index = $(this).parent().index();
-        body[index].title = $(this).val();
+        body[index].option = $(this).val();
         saveBodyOptions(body);
         
     });
