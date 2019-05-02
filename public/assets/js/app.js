@@ -186,6 +186,75 @@ $(function() {
 
 });
 
+$("body").on("click",function(e){
+    if (!$(e.target).closest("#modal-signup,#modal-login").length) {
+        $(".modal-content,.overlay").removeClass("show");
+    }
+});
+
+$(".login-action").on("click",function(){
+    $(".modal-content").removeClass("show");
+    $(".overlay,.modal-content.login").addClass("show");
+    return false;
+});
+
+$(".signup-action").on("click",function(){
+    $(".modal-content").removeClass("show");
+    $(".overlay,.modal-content.signup").addClass("show");
+    return false;
+});
+
+$(".cancel-action").on("click",function(){
+    $(".modal-content,.overlay").removeClass("show");
+    return false;
+});
+
+
+$(".login-form").on("submit",function(e){
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: '/login',
+        data: {
+            username: $(".login-form #username").val(),
+            password: $(".login-form #password").val()
+        },
+        success: function(data)
+        {
+           window.location = "/framework";
+        },
+        error: function (ajaxContext) {
+            $(".login-form").addClass("error");
+            setTimeout(function(){$(".login-form").removeClass("error");},2000);
+        }
+    });
+    return false;
+
+});
+
+$(".signup-form").on("submit",function(e){
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: '/signup',
+        data: {
+            name: $(".signup-form #name-signup").val(),
+            username: $(".signup-form #username-signup").val(),
+            password: $(".signup-form #password-signup").val()
+        },
+        success: function(data)
+        {
+           window.location = "/framework";
+        },
+        error: function (ajaxContext) {
+            $(".signup-form").addClass("error");
+            setTimeout(function(){$(".signup-form").removeClass("error");},2000);
+        }
+    });
+    return false;
+
+});
+
 
 
 /*

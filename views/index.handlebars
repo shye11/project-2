@@ -1,49 +1,66 @@
-<body id="home">
-<div>
-  <div class="jumbotron-fluid">
   <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>
+          <a href="/">
+            <img class="logo" src="/assets/images/logo.svg" alt="Lazee Web" />
+          </a>
+        </h1>
+        <br>
+        <h2 class="text-white subheader">Create a professional one-page website in a few clicks.</h2>
     
-     <h1 class="display-4">Layzee Web</h1>
-
-      <h1 class="display-6">The Easiest Way to Create Your Custom Professional Site</h1>
-      
-      <hr class="my-4">
-      <form class="login-form" action="/login" method="post">
-        <div>
-          <label>Username:</label>
-          <input class="username" type="text" name="username" />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input class="password" type="password" name="password" />
-        </div>
-        <p></p>
-        <button type="submit" class="btn btn-primary btn-lg">Login</button>
-      </form>
-      <hr class="my-4">
-      <div class="card w-50">
-    <div class="card-body">
-      <h5 class="card-title">Sign-up</h5>
-        <p class="card-text">Don't have an account?</p>
-          <form action="/signup" method="post">
-            <div>
-                <label>Full Name:</label>
-                <input type="text" name="name"/>
-            </div>
-            <div>
-                <label>Username:</label>
-                <input type="text" name="username"/>
-            </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" name="password"/>
-            </div>
-            <p></p>
-                <button type="submit" class="btn btn-primary btn-lg">Signup</button>
-        </form>
+    
+        
+        <ul class="get-started">
+          <li><span class="cta-signup">Get Started</span></li>
+          <li>
+            <a href="#" class="signup-action button">Sign up</a>
+            Or <a href="#" class="login-action">Login</a> to your account.
+          </li>        
+        </ul>
+        
+    
       </div>
+    </div>
+
+    <div class="row promos">
+
+      <div class="col-md-4">
+
+       
+        <span>
+          <i class="fas fa-user-ninja"></i>
+        </span>
+        <h4>Make a site like a ninja</h4>
+          
+      </div>
+      <div class="col-md-4">
+
+       
+        <span>
+          <i class="fas fa-user-clock"></i>
+        </span>
+        <h4>Save precious time</h4>
+          
+      </div>
+      <div class="col-md-4">
+
+       
+        <span>
+          <i class="fas fa-window-restore"></i>
+        </span>
+         <h4>Customize galore</h4>
+          
+      </div>
+
+    </div>
   </div>
-  </div>
+
+
+<div class="overlay">
+
+{{> login }}
+
+{{> signup }}
+
 </div>
-</div>
-</body>
