@@ -1,0 +1,44 @@
+	    <div id="sitewrapper">
+                <div id="nav" 
+                    class="editable"
+                    data-option="nav">
+
+                    {{#if data.nav.option}}
+                        {{> (partial 'nav' data.nav.option) navOptions=data.body }}
+                    {{else}}
+                        {{> nav/option-one }}
+                    {{/if}}
+            
+                </div>
+
+                <div id="carousel" 
+                    class="editable"
+                    data-option="carousel">
+
+                    {{#if data.carousel.option}}
+                        {{> (partial 'carousel' data.carousel.option) }}
+                    {{else}}
+                        {{> carousel/option-one }}
+                    {{/if}}
+
+                </div>
+
+                <div id="body">
+                    {{#each data.body}}
+						 {{> (partial 'body' option) className=title }}
+					{{/each}}
+                </div>
+
+                <div id="footer" 
+                    class="editable"
+                    data-option="footer">
+
+                    {{#if data.footer.option}}
+                        {{> (partial 'footer' data.footer.option) footerOptions=data.footer.customization }}
+                    {{else}}
+                        {{> footer/option-one }}
+                    {{/if}}
+
+                </div>
+
+			</div>

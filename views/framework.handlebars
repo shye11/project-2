@@ -26,7 +26,7 @@
 						<ul class="sortable">
 							{{#each data.body}}
 								<li class="ui-state-default">
-									<input name="{{lowercase title }}" value="{{ title }}" placeholder="Page Name" class="form-control mb-2">
+									<input name="{{lowercase title }}" value="{{ title }}" placeholder="Page Name" class="bodyInput form-control mb-2">
 									<select name="{{lowercase title }}" class="bodyOption form-control form-control" data-option="body">
 										<option value='three-columns' {{#equal option 'three-columns' }}SELECTED{{/equal}}>Option 1</option>
 										<option value='two-columns' {{#equal option 'two-columns' }}SELECTED{{/equal}}>Option 2</option>
@@ -55,50 +55,7 @@
 
 		</div>
 		<div id="main-content">
-			<div id="sitewrapper">
-                <div id="nav" 
-                    class="editable"
-                    data-option="nav">
-
-                    {{#if data.nav.option}}
-                        {{> (partial 'nav' data.nav.option) navOptions=data.body }}
-                    {{else}}
-                        {{> nav/option-one }}
-                    {{/if}}
-            
-                </div>
-
-                <div id="carousel" 
-                    class="editable"
-                    data-option="carousel">
-
-                    {{#if data.carousel.option}}
-                        {{> (partial 'carousel' data.carousel.option) }}
-                    {{else}}
-                        {{> carousel/option-one }}
-                    {{/if}}
-
-                </div>
-
-                <div id="body">
-                    {{#each data.body}}
-						 {{> (partial 'body' option) className=title }}
-					{{/each}}
-                </div>
-
-                <div id="footer" 
-                    class="editable"
-                    data-option="footer">
-
-                    {{#if data.footer.option}}
-                        {{> (partial 'footer' data.footer.option) footerOptions=data.footer.customization }}
-                    {{else}}
-                        {{> footer/option-one }}
-                    {{/if}}
-
-                </div>
-
-			</div>
+			{{> preview/page data=data }}
 		</div>
 
 
