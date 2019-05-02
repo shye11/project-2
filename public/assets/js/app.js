@@ -39,10 +39,17 @@ $(function() {
             },
           }).then(
             function() {
+
                 getPage();
             }
           );
 
+    });
+
+    $(document).on("blur",".customizationForm input",function(e){
+
+        $(".customizationForm").submit();
+        
     });
 
     $(document).on("submit",".customizationForm",function(e){
@@ -56,7 +63,7 @@ $(function() {
           }).then(
             function() {
                 // console.log("saved "+element+"/"+value);
-              //location.reload();
+              location.reload(true);
             }
           );
     });
