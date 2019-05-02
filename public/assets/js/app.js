@@ -11,7 +11,7 @@ $(function() {
 
     // When an element is clicked, we show the specific sidebar
     // Todo: get the current logged in UserId
-    $(".editable").on("click",function(){        
+    $(document).on("click",".editable",function(){        
 
         var option = $(this).attr("data-option");
         id = 1; // user 1
