@@ -223,7 +223,7 @@ body#home #main-content { width: 100%; }
     position: fixed; 
     z-index: 1000;
 }
-.modal-content { transition: all 0.3s linear; margin-top: -300%; position: absolute; max-width: 400px; }
+.modal-content { width: 90%; transition: all 0.3s linear; margin-top: -300%; position: absolute; max-width: 450px; }
 
 form.error input { border: 2px solid #FF0000; }
 
@@ -233,7 +233,7 @@ form.error input { border: 2px solid #FF0000; }
     padding: 30px;
     display: block;
     text-align: left;
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
 }
 
