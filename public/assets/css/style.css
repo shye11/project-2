@@ -160,9 +160,34 @@ body#home #main-content { width: 100%; }
   /* background-color: white; */
 }
 
+#extra-options {
+    position: fixed; 
+    top: 0px;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(200,200,200,0.9);
+    border-bottom: 1px solid #CCC;
+}
+
+#extra-options img {
+    margin: 10px 0 0 10px;
+}
 .extra-options {
     margin: 5px;
     float: right;
+}
+.extra-options .design { display: none; }
+
+#main { padding-top: 50px; }
+#main #sidebar { background: rgba(199,199,199,0.3); }
+#main .backButton { 
+    margin: 20px 0 30px 0;
+    display: inline-block;
+    border-radius: 4px; 
+    padding: 6px 20px;
+}
+#main .backButton:hover {
+    text-decoration: none;
 }
 
 .jumbotron-fluid {
@@ -235,4 +260,24 @@ form.error input { border: 2px solid #FF0000; }
 @media(max-width: 960px){
     .cta-signup { 
         border-right: none; padding: 0 0 20px 0; width: 100%; }
+
+    #main #sidebar {
+        display: none;
+    } 
+
+    #main #main-content { width: 100%; }
+    #main #sidebar.show { 
+        display: block;
+        position: absolute; 
+        width: 100%;
+        z-index: 100;
+        background: rgba(255,255,255,0.99);
+        padding-bottom: 100px;
+    } 
+    .extra-options span { display: none; }
+}
+
+@media(max-width: 469px){
+    #extra-options img { width: 120px; margin: 13px 0 0 15px; }
+    .extra-options { font-size: 14px; }
 }

@@ -255,7 +255,24 @@ $(".signup-form").on("submit",function(e){
 
 });
 
+$(".extra-options.design").on("click",function(){
+    if( $("#sidebar").hasClass("show")){
+        $("#sidebar").removeClass("show");
+    } else {
+        $("#sidebar").addClass("show");
+    }
+    return false;
+});
 
+
+if(window.location.hash) {
+   if(window.location.hash == "#login"){
+       $(".login-action").click();
+   };
+   if(window.location.hash == "#signup"){
+    $(".signup-action").click();
+};
+  } 
 
 /*
 TODO:
