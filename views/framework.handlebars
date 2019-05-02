@@ -1,7 +1,11 @@
 <div id='extra-options'>
-	<a class="btn btn-large btn-primary extra-options" href="/">Preview</a>
-	<a class="btn btn-large btn-primary extra-options" href="/">Export Code</a>
-	<a class="btn btn-large btn-primary extra-options" href="/">Logout</a>
+	<a href="/"><img src="/assets/images/logo-black.svg" alt="LazeeWeb" /></a>
+	<a title="Logout" class="btn btn-large btn-primary extra-options" href="/"><i class="fas fa-sign-out-alt"></i><span> Logout</span></a>
+	<a title="Design" class="btn btn-large btn-primary extra-options design" href="#"><i class="fas fa-pencil-ruler"></i> Design</a>
+	<a title="Preview" class="btn btn-large btn-primary extra-options" href="/"><i class="far fa-window-maximize"></i><span> Preview</span></a>
+	<a title="Export" class="btn btn-large btn-primary extra-options" href="/"><i class="fas fa-file-export"></i><span> Export Code</span></a>
+	
+
 </div>
 
 <div id="sidebar">
@@ -52,7 +56,6 @@
 							<option value="option-one" {{#equal data.footer.option 'option-one' }}SELECTED{{/equal}}>Option 1</option>
 							<option value="option-two" {{#equal data.footer.option 'option-two' }}SELECTED{{/equal}}>Option 2</option>
 							<option value="option-three" {{#equal data.footer.option 'option-three' }}SELECTED{{/equal}}>Option 3</option>
-						
 						</select>
 					</div>
 				</div>

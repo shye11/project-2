@@ -53,7 +53,7 @@ module.exports = function(app, passport) {
         res.render("framework", { data: frameworkOptions[0].dataValues });
       });
     } else {
-      res.redirect("/login");
+      res.redirect("/#login");
     }
   });
 
@@ -229,7 +229,7 @@ app.get('/logout', function(req, res) {
   app.post("/login",
     passport.authenticate("local-signin", {
       successRedirect: "/framework",
-      failureRedirect: "/login"
+      failureRedirect: "/#login"
     })
   );
 
