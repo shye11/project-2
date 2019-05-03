@@ -2,18 +2,18 @@ var passport = require("passport");
 var db = require("../models");
 var LocalStrategy = require("passport-local").Strategy;
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
+// passport.serializeUser(function(user, done) {
+//   done(null, user.id);
+// });
 
-passport.deserializeUser(function(id, done) {
-  console.log("deserializeUser ran", id);
-  db.User.findById(id)
-    .then(user => {
-      done(null, user);
-    })
-    .catch(done);
-});
+// passport.deserializeUser(function(id, done) {
+//   console.log("deserializeUser ran", id);
+//   db.User.findById(id)
+//     .then(user => {
+//       done(null, user);
+//     })
+//     .catch(done);
+// });
 
 //LOCAL SIGNIN
 
@@ -22,15 +22,11 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "username",
-      passwordField: "password",
-      passReqToCallback: true
+      // passwordField: "password",
+      // passReqToCallback: true
     },
 
-    function(req, username, password, done) {
-      // var isValidPassword = function(userpass, password) {
-      //   return bCrypt.compareSync(password, userpass);
-      // };
-
+    function(username, password, done) {
       db.User.findOne({
         where: {
           username: username
@@ -39,29 +35,26 @@ passport.use(
         .then(function(user) {
           if (!user) {
             return done(null, false, {
-              message: "Username does not exist"
+              alert: "Username does not exist"
             });
           }
 
-          // if (!isValidPassword(user.password, password)) {
-          //   return done(null, false, {
-          //     message: "Incorrect password."
-          //   });
-          // }
-
-          var userinfo = user.get();
-          return done(null, userinfo);
-        })
-        .catch(function(err) {
-          console.log("Error:", err);
-
+          // var userinfo = user.get();
+        //   // return done(null, userinfo);
+        // }) 
+        
+        else if (!user.validPassword(password)) {
           return done(null, false, {
-            message: "Something went wrong with your Signin"
-          });
+            alert: "Incorrect Password"
+        });
+
+      }
+
+      return done(null, user);
+
         });
     }
-  )
-);
+));
 
 passport.use(
   "local-signup",
@@ -120,5 +113,15 @@ passport.use(
     }
   )
 );
+
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
 
 module.exports = passport;
