@@ -1,19 +1,57 @@
 <a href="#" class="backButton button btn-secondary"><i class="fa fa-back"></i> Back</a>
-<H5>Instagram</H5>
+
 <form  method="PUT" action="/api/customization/footer" class="customizationForm">
-<input name="instagram" class="form-control mb-3" value="">
 
-<H5>Snapchat</H5>
-<input name="snapchat" class="form-control mb-3" value="" >
+<div class="item-one">
+<h5>Instagram</h5>
+<textarea name="columnOne" id="" class="form-control mb-3"  cols="18" rows="10" placeholder="instagram">
+{{#if data.customization.columnOne}}{{data.customization.columnOne}}{{/if}}
+</textarea>
+</div>
 
-<H5>Twitter</H5>
-<input name="twitter" class="form-control mb-3" value="" >
+<div class="item-two">
+<h5>Snapchat</h5>
+<textarea name="columnTwo" id="" class="form-control mb-3"  cols="18" rows="10" placeholder="snapchat" >
+{{#if data.customization.columnTwo}}{{data.customization.columnTwo}}{{/if}}
+</textarea>
+</div>
 
-<H5>Facebook</H5>
-<input name="facebook" class="form-control mb-3" value="" >
+<div class="item-three">
+<h5>Twitter</h5>
+<textarea name="columnThree" id="" class="form-control mb-3" cols="18" rows="10" placeholder="twitter">
+{{#if data.customization.columnThree}}{{data.customization.columnThree}}{{/if}}
+</textarea>
+</div>
 
-<H5>LinkedIn</H5>
-<input name="linkedIn" class="form-control mb-3"  value="">
+<div class="item-four">
+<h5>Facebook</h5>
+<textarea name="columnFour" id="" class="form-control mb-3" cols="18" rows="10" placeholder="facebook">
+{{#if data.customization.columnFour}}{{data.customization.columnFour}}{{/if}}
+</textarea>
+</div>
+
+<div class="item-five">
+<h5>LinkedIn</h5>
+<textarea name="columnFive" id="" class="form-control mb-3" cols="18" rows="10" placeholder="linkedin">
+{{#if data.customization.columnFive}}{{data.customization.columnFive}}{{/if}}
+</textarea>
+</div>
 <br>
 <button class="button btn-primary">Submit</button>
 </form>
+
+<style>
+    /* we use styles to hide the options */
+    .item-one,.item-two,.item-three,.item-four { margin: 0 0 30px 0; }
+    .one-text-column .item-two,
+    .one-text-column .item-three,
+    .one-text-column .item-four,
+    .three-text-columns .item-four,
+    .two-columns .item-three,
+    .two-columns .item-four,
+    .two-text-columns .item-three,
+    .two-text-columns .item-four,
+    .three-columns .item-four { display: none !important; }
+
+
+</style>
