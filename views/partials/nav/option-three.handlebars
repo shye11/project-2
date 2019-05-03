@@ -4,9 +4,8 @@
 --}}
 <nav class="nav-ver-three">
 
-
-	<a class="logo" href="/" style="background: url(/assets/images/sample-logo.png) center no-repeat; background-size: contain;">
-		<img src="/assets/images/logo.gif" alt="logo">
+	<a class="logo" href="/" style="background: url({{#if data.nav.customization.logo }}{{{ data.nav.customization.logo }}}{{else}}/assets/images/sample-logo.png{{/if}}) center no-repeat; background-size: contain;">
+		<img src="/assets/images/logo.gif" alt="{{#if data.nav.customization.title }}{{ data.nav.customization.title }}{{else}}logo{{/if}}">
 	</a>
 
 	<a href="#" class="hamburger off-canvas d-md-block d-lg-none">
@@ -29,7 +28,7 @@
 
 <style>
 	nav.nav-ver-three { 
-		padding: 0;
+		padding: 0 0 0 15px;
 		clear: both;
 		display: block;
 		position: relative;

@@ -4,9 +4,8 @@
 --}}
 <nav class="nav-ver-four">
 
-
-	<a class="logo" href="/" style="background: url(/assets/images/sample-logo.png) center no-repeat; background-size: contain;">
-		<img src="/assets/images/logo.gif" alt="logo">
+	<a class="logo" href="/" style="background: url({{#if data.nav.customization.logo }}{{{ data.nav.customization.logo }}}{{else}}/assets/images/sample-logo.png{{/if}}) center no-repeat; background-size: contain;">
+		<img src="/assets/images/logo.gif" alt="{{#if data.nav.customization.title }}{{ data.nav.customization.title }}{{else}}logo{{/if}}">
 	</a>
 
 	<ul class="main-nav">
@@ -23,7 +22,7 @@
 
 <style>
 	nav.nav-ver-four { 
-		padding: 0;
+		padding: 0 0 0 15px;
 		clear: both;
 		display: block;
 		position: relative;
@@ -72,6 +71,7 @@
 
 		nav.nav-ver-four {
 			text-align: center;
+			padding: 0 0 0 0px;
 		}
 
 		nav.nav-ver-four .container {

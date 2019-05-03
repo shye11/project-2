@@ -1,34 +1,26 @@
-<a href="#" class="backButton button btn-secondary"><i class="fa fa-back"></i> Back</a>
+<a href="#" class="backButton button btn-secondary"><i class="fas fa-arrow-left"></i> &nbsp;Back</a>
 
-<form  method="PUT" action="/api/customization/carousel/{{index}}" class="customizationForm {{data.option}}">
+<form  method="PUT" action="/api/customization/carousel/" class="customizationForm {{data.option}}">
 
-<div class="item-one">
-<h5>Image 1</h5>
-<textarea name="columnOne" id="" class="form-control mb-3"  cols="18" rows="10" placeholder="image">
-{{#if data.customization.columnOne}}{{data.customization.columnOne}}{{/if}}
-</textarea>
-</div>
+    <div class="item-one">
+        <h5>Image 1</h5>
+        <input name="image-one" class="form-control mb-3"  value="{{#if data.carousel.customization.image-one}}{{ data.carousel.customization.image-one}}{/if}" />
+    </div>
 
-<div class="item-two">
-<h5>Image 2</h5>
-<textarea name="columnTwo" id="" class="form-control mb-3"  cols="18" rows="10" placeholder="image" >
-{{#if data.customization.columnTwo}}{{data.customization.columnTwo}}{{/if}}
-</textarea>
-</div>
+    <div class="item-two">
+        <h5>Image 2</h5>
+        <input name="image-two" class="form-control mb-3"  value="{{#if data.carousel.customization.image-one}}{{ data.carousel.customization.image-one}}{/if}" />
+    </div>
 
-<div class="item-three">
-<h5>Image 3</h5>
-<textarea name="columnThree" id="" class="form-control mb-3" cols="18" rows="10" placeholder="image">
-{{#if data.customization.columnThree}}{{data.customization.columnThree}}{{/if}}
-</textarea>
-</div>
+    <div class="item-three">
+        <h5>Image 1</h5>
+        <input name="image-three" class="form-control mb-3"  value="{{#if data.carousel.customization.image-one}}{{ data.carousel.customization.image-one}}{/if}" />
+    </div>
 
-<div class="item-four">
-<h5>Image 4</h5>
-<textarea name="columnFour" id="" class="form-control mb-3" cols="18" rows="10" placeholder="image">
-{{#if data.customization.columnFour}}{{data.customization.columnFour}}{{/if}}
-</textarea>
-</div>
+    <div class="item-four">
+        <h5>Image 1</h5>
+        <input name="image-four" class="form-control mb-3"  value="{{#if data.carousel.customization.image-one}}{{ data.carousel.customization.image-one}}{/if}" />
+    </div>
 
 <br>
 

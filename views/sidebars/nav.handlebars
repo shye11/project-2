@@ -1,12 +1,17 @@
-<a href="#" class="backButton button btn-secondary"><i class="fa fa-back"></i> Back</a>
+<a href="#" class="backButton button btn-secondary"><i class="fas fa-arrow-left"></i> &nbsp;Back</a>
 <H5>Title</H5>
 
 <form method="PUT" action="/api/customization/nav" class="customizationForm">
 
-<input name="title" value="" class="form-control mb-3" >
+<input name="title" value="{{ data.nav.customization.title }}" class="form-control mb-3" >
+<input name="logoFile" value="{{#if data.nav.customization.logo }}{{{ data.nav.customization.logo }}}{{/if}}" type="hidden" class="fileInput">
 
 <h5>Logo</h5>
-<p>Uploder Goes Here</p>
+{{#if data.nav.customization.logo }}
+    <img style="width: 100%; height: auto; margin: 0 0 20px 0;" src="{{{ data.nav.customization.logo }}}" alt="{{{ data.nav.customization.title }}}">
+{{/if}}
+
+<input name="logo" type="file" value="{{#if data.nav.customization.logo }}{{{ data.nav.customization.logo }}}{{/if}}" class="file" />
 
 <button class="button btn-primary">Submit</button>
 
