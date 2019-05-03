@@ -4,8 +4,7 @@
 --}}
 <nav class="nav-ver-one">
 
-
-	<a class="logo" href="/" style="background: url(/assets/images/sample-logo.png) center no-repeat; background-size: contain;">
+	<a class="logo" href="/" style="background: url({{#if data.nav.customization.logo }}{{{ data.nav.customization.logo }}}{{else}}/assets/images/sample-logo.png{{/if}}) center no-repeat; background-size: contain;">
 		<img src="/assets/images/logo.gif" alt="logo">
 	</a>
 
@@ -31,7 +30,7 @@
 
 <style>
 	nav.nav-ver-one { 
-		padding: 0;
+		padding: 0 0 0 15px;
 		clear: both;
 		display: block;
 		position: relative;

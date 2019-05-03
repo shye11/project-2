@@ -1,5 +1,9 @@
 $(function() {
 
+    $.fn.filepond.registerPlugin(FilePondPluginImagePreview);
+    $.fn.filepond.registerPlugin(FilePondPluginFileEncode);
+    $.fn.filepond.registerPlugin(FilePondPluginFileValidateSize);
+
     // This is the back button on the dynamic options
     $(document).on("click",".backButton",function(e){
         e.preventDefault;
@@ -21,7 +25,12 @@ $(function() {
         $(".optionSidebar").load(url, function(){
             $(".frameworkSidebar").hide();
             $(".optionSidebar").show();
-        })
+
+            if($('.file').length) {  
+                initializeFileUploader(".file");
+            };
+
+        });
         return false;
     });
 
@@ -310,11 +319,40 @@ if(window.location.hash) {
    };
    if(window.location.hash == "#signup"){
     $(".signup-action").click();
-};
-  } 
+    };
+} 
 
-/*
-TODO:
-    1. create function/route to save to DB
-    2. create update the user input
-*/
+function initializeFileUploader(className) {
+    
+    var file = $(className);
+    var currentFile;
+
+    // First register any plugins
+    $.fn.filepond.setDefaults({
+        maxFileSize: '3MB'
+    });
+
+    // Turn input element into a pond
+    file.filepond();
+
+    file.filepond('allowFileEncode',true);
+
+    // Set allowMultiple property to true
+    file.filepond('allowMultiple', false);
+
+    
+}
+
+// Listen for addfile event
+$(document).on('FilePond:addfile', function(e) {
+    console.log('file added event', e);
+    $(".fileInput").blur();
+    //console.log(e.detail.file.getFileEncodeDataURL());
+    currentFile = e.detail.file.getFileEncodeDataURL();
+    console.log("currentFile",currentFile);
+    $(".fileInput").val(currentFile);
+    
+});
+
+
+
