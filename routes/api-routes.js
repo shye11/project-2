@@ -191,7 +191,8 @@ module.exports = function(app, passport) {
       // console.log(frameworkOptions[0].dataValues.nav.option);
       var data = frameworkOptions.dataValues;
       if (updateType == "nav") {
-        data.nav.customization = req.body;
+        data.nav.customization['title'] = req.body.title;
+        data.nav.customization['logo'] = req.body.logoFile;
         updateObj = {
           nav: data.nav
         };
