@@ -4,9 +4,8 @@
 --}}
 <nav class="nav-ver-three">
 
-
 	<a class="logo" href="/" style="background: url({{#if data.nav.customization.logo }}{{{ data.nav.customization.logo }}}{{else}}/assets/images/sample-logo.png{{/if}}) center no-repeat; background-size: contain;">
-		<img src="/assets/images/logo.gif" alt="logo">
+		<img src="/assets/images/logo.gif" alt="{{#if data.nav.customization.title }}{{ data.nav.customization.title }}{{else}}logo{{/if}}">
 	</a>
 
 	<a href="#" class="hamburger off-canvas d-md-block d-lg-none">
