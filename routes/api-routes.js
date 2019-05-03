@@ -76,6 +76,23 @@ module.exports = function(app, passport) {
     res.render("index", { layout: "static" });
   });
 
+  app.get("/site/:username", function(req, res) {
+
+    db.User.findAll({
+      where: {
+        username: req.params.username
+      },
+      include: [
+        {
+          model: db.Layout
+        }
+      ]
+    }).then(function(frameworkOptions) {
+      //console.log(frameworkOptions[0].dataValues.nav.option);
+      res.render("partials/preview/page", { layout: "site", data: frameworkOptions[0].dataValues.Layout });
+    });
+  });
+
   // Load all options on the framework page
   // TODO: we need to determine the logged in user
   app.get("/framework", function(req, res) {

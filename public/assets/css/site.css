@@ -1,0 +1,17 @@
+/* 
+CSS STYLES 
+--------------------------------------
+Specific to the user sites 
+*/
+
+#body  { 
+    padding: 10px 0 30px; 
+}
+
+#body .container {
+    padding: 30px 0 10px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.card { margin-bottom: 20px; }
