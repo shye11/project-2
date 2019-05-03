@@ -132,7 +132,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.put("/api/customization/:type", function(req, res) {
+  app.put("/api/customization/:type/:index?", function(req, res) {
     var updateObj = {};
     var updateType = req.params.type;
     db.Layout.findOne({
@@ -158,6 +158,13 @@ module.exports = function(app, passport) {
         data.carousel.customization = req.body;
         updateObj = {
           carousel: data.carousel
+        };
+      }
+      if (updateType == "body") {
+        var index = req.params.index;
+        data.body[index].customization = req.body;
+        updateObj = {
+          body: data.body
         };
       }
       if (updateType == "footer") {
@@ -199,9 +206,28 @@ module.exports = function(app, passport) {
   });
 
   // Used to render elements for jQuery load of sidebars
-  app.get("/sidebars/:file?", function(req, res) {
+  app.get("/sidebars/:file?/:index?", function(req, res) {
     var file = req.params.file;
-    res.render("sidebars/" + file, { layout: "elements" });
+    db.Layout.findAll({
+      where: {
+        UserId: req.user.id
+      },
+      include: [
+        {
+          model: db.User
+        }
+      ]
+    }).then(function(frameworkOptions){
+      var index = 0;
+      var data = frameworkOptions[0].dataValues;
+      var file = req.params.file;
+      if(file == "body"){
+        index = req.params.index;
+        data = frameworkOptions[0].dataValues.body[index];
+      }
+      res.render("sidebars/" + file, { layout: "elements", data: data, index: index });
+    });
+
   });
 
 

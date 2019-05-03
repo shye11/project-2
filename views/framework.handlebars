@@ -4,8 +4,6 @@
 	<a title="Design" class="btn btn-large btn-primary extra-options design" href="#"><i class="fas fa-pencil-ruler"></i> Design</a>
 	<a title="Preview" class="btn btn-large btn-primary extra-options" href="/"><i class="far fa-window-maximize"></i><span> Preview</span></a>
 	<a title="Export" class="btn btn-large btn-primary extra-options" href="/"><i class="fas fa-file-export"></i><span> Export Code</span></a>
-	
-
 </div>
 
 <div id="sidebar">
@@ -17,7 +15,7 @@
 						<br>
 
 						<label class="mt-10">Navigation</label>
-						<select class="frameworkOption form-control form-control" data-option="nav">
+						<select class="frameworkOption form-control" data-option="nav">
 							<option value="option-one" {{#equal data.nav.option 'option-one' }}SELECTED{{/equal}}>Option 1</option>
 							<option value="option-two" {{#equal data.nav.option 'option-two' }}SELECTED{{/equal}}>Option 2</option>
 							<option value="option-three" {{#equal data.nav.option 'option-three' }}SELECTED{{/equal}}>Option 3</option>
@@ -25,7 +23,7 @@
 						</select>
 						<hr>
 						<label>Carousel</label>
-						<select class="frameworkOption form-control form-control" data-option="carousel">
+						<select class="frameworkOption form-control" data-option="carousel">
 							<option value='option-one' {{#equal data.carousel.option 'option-one' }}SELECTED{{/equal}}>Option 1</option>
 							<option value='option-two' {{#equal data.carousel.option 'option-two' }}SELECTED{{/equal}}>Option 2</option>
 						</select>
@@ -37,13 +35,13 @@
 							{{#each data.body}}
 								<li class="ui-state-default">
 									<input name="{{lowercase title }}" value="{{ title }}" placeholder="Page Name" class="bodyInput form-control mb-2">
-									<select name="{{lowercase title }}" class="bodyOption form-control form-control" data-option="body">
-										<option value='three-columns' {{#equal option 'three-columns' }}SELECTED{{/equal}}>Option 1</option>
-										<option value='two-columns' {{#equal option 'two-columns' }}SELECTED{{/equal}}>Option 2</option>
-										<option value="one-text-column" {{#equal option 'one-text-column'}}SELECTED{{/equal}}>Option 3</option>
-										<option value="two-text-columns" {{#equal option 'two-text-columns'}}SELECTED{{/equal}}>Option 4</option>
-										<option value="three-text-columns"{{#equal option 'three-text-columns'}}SELECTED{{/equal}}>Option 5</option>
-										<option value="four-text-columns"{{#equal option 'four-text-columns'}}SELECTED{{/equal}}>Option 6</option>
+									<select name="{{lowercase title }}" class="bodyOption form-control" data-option="body">
+										<option value="one-text-column" {{#equal option 'one-text-column'}}SELECTED{{/equal}}>Option 1 - One Col</option>
+										<option value="two-text-columns" {{#equal option 'two-text-columns'}}SELECTED{{/equal}}>Option 2 - Two Col</option>
+										<option value="three-text-columns"{{#equal option 'three-text-columns'}}SELECTED{{/equal}}>Option 3 - Three Col</option>
+										<option value="four-text-columns"{{#equal option 'four-text-columns'}}SELECTED{{/equal}}>Option 4 - Four Col</option>
+										<option value='two-columns' {{#equal option 'two-columns' }}SELECTED{{/equal}}>Option 5 - Two Col Cards </option>
+										<option value='three-columns' {{#equal option 'three-columns' }}SELECTED{{/equal}}>Option 6 - Three Col Cards</option>
 									</select>
 									<a href="#" class="btn-sort"><i class="fas fa-sort"></i></a>
 									<a href="#" class="btn-remove"><i class="fas fa-minus-circle"></i></a>
@@ -52,7 +50,7 @@
 						</ul>
 						
 						<label>Footer</label>
-						<select class="frameworkOption form-control form-control" data-option="footer">
+						<select class="frameworkOption form-control" data-option="footer">
 							<option value="option-one" {{#equal data.footer.option 'option-one' }}SELECTED{{/equal}}>Option 1</option>
 							<option value="option-two" {{#equal data.footer.option 'option-two' }}SELECTED{{/equal}}>Option 2</option>
 							<option value="option-three" {{#equal data.footer.option 'option-three' }}SELECTED{{/equal}}>Option 3</option>

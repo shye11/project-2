@@ -25,6 +25,40 @@ $(function() {
         return false;
     });
 
+    // When an element is clicked, we show the specific sidebar
+    // Todo: get the current logged in UserId
+    $(document).on("click",".bodyEditable",function(){        
+
+        var cols = $(this).attr("data-cols");
+        var index = $(this).attr("data-index");
+        var url = "/sidebars/body/"+index;
+        console.log("columns : "+ cols+ " && index : "+ index);
+       
+        $(".optionSidebar").load(url, function(){
+            $(".frameworkSidebar").hide();
+            $(".optionSidebar").show();
+            $(".optionSidebar textarea").trumbowyg({
+                btns: [
+                    ['viewHTML'],
+                    ['formatting'],
+                    ['strong', 'em'],
+                    ['link'],
+                    ['insertImage'],
+                    ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                    ['unorderedList', 'orderedList'],
+                    ['horizontalRule'],
+                    ['removeformat'],
+                    ['fullscreen']
+                ],
+                autogrow: true,
+            }).on('tbwblur', function () {
+                $(".customizationForm").submit();
+            });
+        })
+        return false;
+    });
+
+
     // This saves and dynamically updates the framework options
     $(".frameworkOption").on("change",function(){
         var element = $(this).attr("data-option"); // get the element
@@ -46,7 +80,7 @@ $(function() {
 
     });
 
-    $(document).on("blur",".customizationForm input",function(e){
+    $(document).on("blur",".customizationForm input,.customizationForm textarea",function(e){
 
         $(".customizationForm").submit();
         
@@ -63,7 +97,7 @@ $(function() {
           }).then(
             function() {
                 // console.log("saved "+element+"/"+value);
-              location.reload(true);
+                getPage();
             }
           );
     });
@@ -72,7 +106,12 @@ $(function() {
     var bodySample = {
         title: '',
         option: 'two-columns',
-        customization: {}
+        customization: {
+            columnOne: '',
+            columnTwo: '',
+            columnThree: '',
+            columnFour: '',
+        }
     }
 
     $( ".sortable" ).sortable({

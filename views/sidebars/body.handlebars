@@ -1,24 +1,50 @@
-<a href="#" class="backButton button btn-primary"><i class="fa fa-back"></i> Back</a>
-<form  method="PUT" action="/api/customization/body" class="customizationForm"></form>
-<h4>Column 1</h4>
-<input name="headerOne" value="" placeholder="header">
-<br><br>
-<textarea name="" id="" cols="18" rows="10" placeholder="body"></textarea>
+<a href="#" class="backButton button btn-secondary"><i class="fa fa-back"></i> Back</a>
+<form  method="PUT" action="/api/customization/body/{{index}}" class="customizationForm {{data.option}}">
 
-<h4>Column 2</h4>
-<input name="headerTwo" value="" placeholder="header">
-<br><br>
-<textarea name="" id="" cols="18" rows="10" placeholder="body" ></textarea>
+<div class="item-one">
+<h5>Column 1</h5>
+<textarea name="columnOne" id="" class="form-control mb-3"  cols="18" rows="10" placeholder="body">
+{{#if data.customization.columnOne}}{{data.customization.columnOne}}{{/if}}
+</textarea>
+</div>
 
-<h4>Column 3</h4>
-<input name="headerThree" value="" placeholder="header">
-<br><br>
-<textarea name="" id="" cols="18" rows="10" placeholder="body"></textarea>
+<div class="item-two">
+<h5>Column 2</h5>
+<textarea name="columnTwo" id="" class="form-control mb-3"  cols="18" rows="10" placeholder="body" >
+{{#if data.customization.columnTwo}}{{data.customization.columnTwo}}{{/if}}
+</textarea>
+</div>
 
-<h4>Column 4</h4>
-<input name="headerFour" value="" placeholder="header">
-<br><br>
-<textarea name="" id="" cols="18" rows="10" placeholder="body"></textarea>
+<div class="item-three">
+<h5>Column 3</h5>
+<textarea name="columnThree" id="" class="form-control mb-3" cols="18" rows="10" placeholder="body">
+{{#if data.customization.columnThree}}{{data.customization.columnThree}}{{/if}}
+</textarea>
+</div>
+
+<div class="item-four">
+<h5>Column 4</h5>
+<textarea name="columnFour" id="" class="form-control mb-3" cols="18" rows="10" placeholder="body">
+{{#if data.customization.columnFour}}{{data.customization.columnFour}}{{/if}}
+</textarea>
+</div>
+
 <br>
-<button>Submit</button>
+<button class="button btn-primary">Submit</button>
 </form>
+
+<style>
+    /* we use styles to hide the options */
+    .item-one,.item-two,.item-three,.item-four { margin: 0 0 30px 0; }
+    .one-text-column .item-two,
+    .one-text-column .item-three,
+    .one-text-column .item-four,
+    .three-text-columns .item-four,
+    .two-columns .item-three,
+    .two-columns .item-four,
+    .two-text-columns .item-three,
+    .two-text-columns .item-four,
+    .three-columns .item-four { display: none !important; }
+
+
+</style>

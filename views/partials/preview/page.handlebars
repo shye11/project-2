@@ -25,7 +25,7 @@
 
                 <div id="body">
                     {{#each data.body}}
-						 {{> (partial 'body' option) className=title }}
+						 {{> (partial 'body' option) className=title index=@index }}
 					{{/each}}
                 </div>
 

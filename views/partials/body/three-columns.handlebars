@@ -1,31 +1,37 @@
- <div id="page-{{lowercase title}}" class="container">
- <div class="row">
+ <div id="page-{{lowercase title}}" data-cols="3"  data-index={{index}} class="container bodyEditable">
+<div class="row">
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          {{#if customization.columnOne }}
+            {{{ customization.columnOne }}}
+          {{else}}      
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+          {{/if}} 
         </div>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          {{#if customization.columnTwo }}
+            {{{ customization.columnTwo }}}
+          {{else}}      
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+          {{/if}}
         </div>
       </div>
     </div>
     <div class="col-sm-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                {{#if customization.columnThree }}
+                  {{{ customization.columnThree }}}
+                {{else}}      
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                {{/if}}
               </div>
             </div>
           </div>
-  </div>
-  </div>
+</div>
+</div>
