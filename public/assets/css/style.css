@@ -176,7 +176,7 @@ body#home #main-content { width: 100%; }
     margin: 5px;
     float: right;
 }
-.extra-options .design { display: none; }
+#extra-options .design { display: none; }
 
 #main { padding-top: 50px; }
 #main #sidebar { background: rgba(199,199,199,0.3); }
@@ -315,6 +315,7 @@ button.button.btn-primary { padding: 5px 30px; border-radius: 3px; }
         padding-bottom: 100px;
     } 
     .extra-options span { display: none; }
+    #extra-options .design { display: inline; }
 }
 
 @media(max-width: 469px){
