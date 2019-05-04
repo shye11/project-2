@@ -133,4 +133,24 @@ $(function() {
         centerMode: true
     });
   });
+
+  $(".carousel.carousel-option-one").slick({
+    lazyLoad: 'ondemand',
+    dots: false,
+    slidesToShow: 1,
+    centerMode: false,
+  });
+    $(".carousel.carousel-option-two").slick({
+        lazyLoad: 'ondemand',
+        slidesToShow: 1,
+        fade: true,
+        cssEase: 'linear'
+    });
+    $(".carousel.carousel-option-three").slick({
+        lazyLoad: 'ondemand',
+        dots: true,
+        slidesToShow: 1
+    });
+
+
 });
