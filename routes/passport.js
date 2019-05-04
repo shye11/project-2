@@ -2,19 +2,6 @@ var passport = require("passport");
 var db = require("../models");
 var LocalStrategy = require("passport-local").Strategy;
 
-// passport.serializeUser(function(user, done) {
-//   done(null, user.id);
-// });
-
-// passport.deserializeUser(function(id, done) {
-//   console.log("deserializeUser ran", id);
-//   db.User.findById(id)
-//     .then(user => {
-//       done(null, user);
-//     })
-//     .catch(done);
-// });
-
 //LOCAL SIGNIN
 
 passport.use(
@@ -22,7 +9,7 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "username",
-      passwordField: "password",
+      passwordField: "password"
       // passReqToCallback: true
     },
 
@@ -31,30 +18,20 @@ passport.use(
         where: {
           username: username
         }
-      })
-        .then(function(user) {
-          if (!user) {
-            return done(null, false, {
-              message: "Username does not exist"
-            });
-          }
-
-        //   var userinfo = user.get();
-        //   return done(null, userinfo);
-        // }) 
-        
-        else if (!user.validPassword(password)) {
+      }).then(function(user) {
+        if (!user) {
           return done(null, false, {
-            message: "Incorrect Password"
-        });
+            message: "Username does not exist"
+          });
+        } else if (!user.validPassword(password)) {
+          return done(null, false, { message: "Incorrect Password" });
+        }
 
-      }
-
-      return done(null, user);
-
-        });
+        return done(null, user);
+      });
     }
-));
+  )
+);
 
 passport.use(
   "local-signup",
@@ -66,7 +43,6 @@ passport.use(
     },
 
     function(req, username, password, done) {
-
       db.User.findOne({
         where: {
           username: username
@@ -114,7 +90,6 @@ passport.use(
   )
 );
 
-
 passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
@@ -122,6 +97,5 @@ passport.serializeUser(function(user, cb) {
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
-
 
 module.exports = passport;
