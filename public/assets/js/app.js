@@ -67,7 +67,6 @@ $(function() {
         return false;
     });
 
-
     // This saves and dynamically updates the framework options
     $(".frameworkOption").on("change",function(){
         var element = $(this).attr("data-option"); // get the element
@@ -89,20 +88,29 @@ $(function() {
 
     });
 
+    // Auto-submit when user blurs out of fields
     $(document).on("blur",".customizationForm input,.customizationForm textarea",function(e){
 
         $(".customizationForm").submit();
         
     });
 
+    // Main form submit for all sidebars
     $(document).on("submit",".customizationForm",function(e){
         e.preventDefault();
-        console.log( $( this ).serialize() );
+
+        data = $(this);
+
+        if(data.find("[name=logo]").length){
+          data.find("[name=logo]").val(" ");
+        }
+
+        console.log( data.serialize() );
         
         // api to send the option to mysql
         $.ajax($(this).attr("action"), {
             type: "PUT",
-            data: $(this).serializeArray(),
+            data: data.serialize(),
           }).then(
             function() {
                 // console.log("saved "+element+"/"+value);
@@ -123,6 +131,7 @@ $(function() {
         }
     }
 
+    // jQuery UI to sort body options
     $( ".sortable" ).sortable({
         helper: "clone",
         placeholder: "sortable-placeholder",
@@ -152,6 +161,7 @@ $(function() {
 
     $( ".sortable" ).disableSelection();
 
+    // Add new body element
     $(document).on("click",".btn-add",function(){
         var html = $(".sortable li").eq(0).html();
         $("<li style='display: none;'>"+html+"</li>")
@@ -174,6 +184,7 @@ $(function() {
         return false;
     });
 
+    // Remove body option
     $(document).on("click",".btn-remove",function(){
         if($(".sortable li:visible").length > 1){ 
             $(this).parent().slideUp(); 
@@ -192,6 +203,7 @@ $(function() {
         return false;
     });
 
+    // Event listener when an input is changed
     $(document).on("blur",".bodyInput",function(){
 
         var index = $(this).parent().index();
@@ -200,15 +212,16 @@ $(function() {
 
     });
 
+    // Event listener when a select field is changed
     $(document).on("change",".bodyOption",function(){
 
         var index = $(this).parent().index();
         body[index].option = $(this).val();
         saveBodyOptions(body);
-        
+
     });
 
-
+    // Saves the body options to the DB and reload the view
     function saveBodyOptions(arr) {
         // api to send the option to mysql
         console.log("data",arr);
@@ -224,6 +237,7 @@ $(function() {
           );
     }
 
+    /* Reloads the page and re-nitialize the slideshows */
     function getPage(){
         $("#main-content").empty();
         $("#main-content").load("element/preview/page",function(){
@@ -249,65 +263,62 @@ $(function() {
         });
     }
 
-
-});
-
-$("body").on("click",function(e){
-    if (!$(e.target).closest("#modal-signup,#modal-login").length) {
-        $(".modal-content,.overlay").removeClass("show");
-    }
-});
-
-
-$(".extra-options.design").on("click",function(){
-    if( $("#sidebar").hasClass("show")){
-        $("#sidebar").removeClass("show");
-    } else {
-        $("#sidebar").addClass("show");
-    }
-    return false;
-});
-
-
-if(window.location.hash) {
-   if(window.location.hash == "#login"){
-       $(".login-action").click();
-   };
-   if(window.location.hash == "#signup"){
-    $(".signup-action").click();
-    };
-} 
-
-function initializeFileUploader(className) {
-    
-    var file = $(className);
-    var currentFile;
-
-    // First register any plugins
-    $.fn.filepond.setDefaults({
-        maxFileSize: '3MB'
+    $("body").on("click",function(e){
+        if (!$(e.target).closest("#modal-signup,#modal-login").length) {
+            $(".modal-content,.overlay").removeClass("show");
+        }
     });
 
-    // Turn input element into a pond
-    file.filepond();
+    $(".extra-options.design").on("click",function(){
+        if( $("#sidebar").hasClass("show")){
+            $("#sidebar").removeClass("show");
+        } else {
+            $("#sidebar").addClass("show");
+        }
+        return false;
+    });
 
-    file.filepond('allowFileEncode',true);
 
-    // Set allowMultiple property to true
-    file.filepond('allowMultiple', false);
+    if(window.location.hash) {
+    if(window.location.hash == "#login"){
+        $(".login-action").click();
+    };
+    if(window.location.hash == "#signup"){
+        $(".signup-action").click();
+        };
+    } 
 
-    
-}
+    function initializeFileUploader(className) {
+        
+        var file = $(className);
+        var currentFile;
 
-// Listen for addfile event
-$(document).on('FilePond:addfile', function(e) {
-    console.log('file added event', e);
-    $(".fileInput").blur();
-    //console.log(e.detail.file.getFileEncodeDataURL());
-    currentFile = e.detail.file.getFileEncodeDataURL();
-    console.log("currentFile",currentFile);
-    $(".fileInput").val(currentFile);
-    
+        // First register any plugins
+        $.fn.filepond.setDefaults({
+            maxFileSize: '1MB'
+        });
+
+        // Turn input element into a pond
+        file.filepond();
+
+        file.filepond('allowFileEncode',true);
+
+        // Set allowMultiple property to true
+        file.filepond('allowMultiple', false);
+
+    }
+
+    // Listen for addfile event
+    $(document).on('FilePond:addfile', function(e) {
+        console.log('file added event', e);
+        $(".fileInput").blur();
+        //console.log(e.detail.file.getFileEncodeDataURL());
+        currentFile = e.detail.file.getFileEncodeDataURL();
+        //console.log("currentFile",currentFile);
+        $(".fileInput").val(currentFile);
+        
+    });
+
 });
 
 
