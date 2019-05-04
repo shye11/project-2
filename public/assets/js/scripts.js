@@ -103,17 +103,17 @@ $(function() {
     
     });
   
-      $(".logout-action").on("click", function(e){
-        e.preventDefault();
-        console.log('LOGING OUT');
-        $.ajax({
-            type: "GET",
-            url: '/logout',
-            success: function(response){
-                console.log("logged out");
-                window.location = "/";
-            }
-        });
+    $(".logout-action").on("click", function(e){
+    e.preventDefault();
+    console.log('LOGING OUT');
+    $.ajax({
+        type: "GET",
+        url: '/logout',
+        success: function(response){
+            console.log("logged out");
+            window.location = "/";
+        }
+    });
 
     $(".carousel.carousel-option-one").slick({
         lazyLoad: 'ondemand',
@@ -134,4 +134,25 @@ $(function() {
         centerMode: true,
     });
 
+    });
+
+    $(".carousel.carousel-option-one").slick({
+        lazyLoad: 'ondemand',
+        dots: false,
+        slidesToShow: 1,
+        centerMode: false,
+    });
+    $(".carousel.carousel-option-two").slick({
+        lazyLoad: 'ondemand',
+        slidesToShow: 1,
+        fade: true,
+        cssEase: 'linear'
+    });
+    $(".carousel.carousel-option-three").slick({
+        lazyLoad: 'ondemand',
+        dots: true,
+        slidesToShow: 1,
+        centerMode: true,
+    });
+    
 });
