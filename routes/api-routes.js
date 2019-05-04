@@ -7,7 +7,6 @@
 
 // Grabbing our models
 var db = require("../models");
-var logout = require('express-passport-logout');
 
 // Routes
 // =============================================================
@@ -36,7 +35,8 @@ module.exports = function(app, passport) {
   app.post("/signup",
     passport.authenticate("local-signup", {
       successRedirect: "/framework",
-      failureRedirect: "/signup"
+      failureRedirect: "/signup",
+      failureFlash: true
     })
   );
 /* Handle Logout */
@@ -56,7 +56,8 @@ module.exports = function(app, passport) {
   app.post("/login",
     passport.authenticate("local-signin", {
       successRedirect: "/framework",
-      failureRedirect: "/#login"
+      failureRedirect: "/#login",
+      failureFlash: true
     })
   );
 
