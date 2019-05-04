@@ -22,7 +22,7 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "username",
-      // passwordField: "password",
+      passwordField: "password",
       // passReqToCallback: true
     },
 
@@ -35,17 +35,17 @@ passport.use(
         .then(function(user) {
           if (!user) {
             return done(null, false, {
-              alert: "Username does not exist"
+              message: "Username does not exist"
             });
           }
 
-          // var userinfo = user.get();
-        //   // return done(null, userinfo);
+        //   var userinfo = user.get();
+        //   return done(null, userinfo);
         // }) 
         
         else if (!user.validPassword(password)) {
           return done(null, false, {
-            alert: "Incorrect Password"
+            message: "Incorrect Password"
         });
 
       }

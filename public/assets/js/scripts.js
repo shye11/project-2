@@ -50,6 +50,7 @@ $(function() {
         $(".overlay,.modal-content.signup").addClass("show");
         return false;
     });
+
     
     $(".cancel-action").on("click",function(){
         $(".modal-content,.overlay").removeClass("show");
@@ -100,6 +101,19 @@ $(function() {
         });
         return false;
     
+    });
+
+    $(".logout-action").on("click", function(e){
+        e.preventDefault();
+        console.log('LOGING OUT');
+        $.ajax({
+            type: "GET",
+            url: '/logout',
+            success: function(response){
+                console.log("logged out");
+                window.location = "/";
+            }
+        });
     });
 
 });
