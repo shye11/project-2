@@ -151,8 +151,7 @@ $(function() {
     $(".carousel.carousel-option-three").slick({
         lazyLoad: 'ondemand',
         dots: true,
-        slidesToShow: 1,
-        centerMode: true,
+        slidesToShow: 1
     });
     
 });
