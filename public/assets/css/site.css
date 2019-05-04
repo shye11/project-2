@@ -6,6 +6,8 @@ Specific to the user sites
 
 #body  { 
     padding: 10px 0 30px; 
+    clear: both;
+    width: 100%;
 }
 
 #body .container {
@@ -15,3 +17,35 @@ Specific to the user sites
 }
 
 .card { margin-bottom: 20px; }
+
+.carousel { float: left; width: 100%; }
+.carousel .slide { position: relative; }
+.carousel .slide,
+.carousel img { float: left; width: 100%; height: auto; }
+
+.carousel .slideText { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 3px #000000;
+}
+
+.carousel-option-three .slideText {  
+    max-width: 980px;
+    width: 90%;
+    text-align: left;
+}
+
+.slick-prev { left: 30px; z-index: 100; }
+.slick-next { right: 30px; }
+.slick-dots { bottom: 30px; }
+.slick-dots li { display: inline-block; width: 17px; height: 17px; 
+    background:rgba(255,255,255,0.6); 
+    border-radius: 1000px; }
+.slick-dots li:hover, .slick-dots .slick-active {
+    background:rgba(255,255,255,1); 
+}
+.slick-dots li button { display: none; }
