@@ -153,5 +153,15 @@ $(function() {
             slidesToShow: 1
         });
     }
+
+    if(window.location.hash) {
+      if(window.location.hash == "#login"){
+        $(".login-action").click();
+      }
+      if(window.location.hash == "#signup"){
+        $(".signup-action").click();
+      }
+    } 
+
         
 });
