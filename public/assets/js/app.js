@@ -1,8 +1,11 @@
 $(function() {
 
-    $.fn.filepond.registerPlugin(FilePondPluginImagePreview);
-    $.fn.filepond.registerPlugin(FilePondPluginFileEncode);
-    $.fn.filepond.registerPlugin(FilePondPluginFileValidateSize);
+    $.fn.filepond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginFileEncode,
+        FilePondPluginFileValidateSize,
+        FilePondPluginImageResize,
+        FilePondPluginImageTransform);
 
     // This is the back button on the dynamic options
     $(document).on("click",".backButton",function(e){
@@ -295,16 +298,20 @@ $(function() {
 
         // First register any plugins
         $.fn.filepond.setDefaults({
-            maxFileSize: '1MB'
+            maxFileSize: '3MB',
+            allowImageResize: true,
+            allowFileEncode: true,
+            allowMultiple: false,
+            imageTransformOutputQuality: 60,
+            imageResizeTargetWidth: 400,
+            imageResizeTargetHeight: 150,
+            imageResizeMode: 'contain',
+            imageCropAspectRatio: 1,
+            imageTransformOutputStripImageHead: true,
         });
 
         // Turn input element into a pond
         file.filepond();
-
-        file.filepond('allowFileEncode',true);
-
-        // Set allowMultiple property to true
-        file.filepond('allowMultiple', false);
 
     }
 
