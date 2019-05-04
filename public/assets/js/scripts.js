@@ -132,4 +132,5 @@ $(function() {
         slidesToShow: 1,
         centerMode: true
     });
+  });
 });
