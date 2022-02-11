@@ -17,7 +17,7 @@
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.4.3",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.2",
+    "express-handlebars": "^5.3.1",
     "express-passport-logout": "^0.1.0",
     "express-session": "^1.16.1",
     "jquery": "^3.4.1",
